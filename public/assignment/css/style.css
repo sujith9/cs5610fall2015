@@ -3,5 +3,18 @@
 }
 
 .body-padding{
-    margin-top: 10px;
+    margin-top: 0px;
+}
+
+.nav>li>a:hover{
+    background-color: #337ab7;
+    color: #ffffff;
+}
+
+.navbar{
+    border-radius: 0px;
+}
+
+.navbar .glyphicon:before{
+    font-size: 12px;
 }
