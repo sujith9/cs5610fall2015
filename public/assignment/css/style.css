@@ -1,3 +1,7 @@
-.row{
+.row-full{
     max-width: 100%;
+}
+
+.body-padding{
+    margin-top: 10px;
 }
