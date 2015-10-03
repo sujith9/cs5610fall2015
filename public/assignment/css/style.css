@@ -18,3 +18,13 @@
 .navbar .glyphicon:before{
     font-size: 12px;
 }
+
+.form-horizontal .control-label{
+    text-align: left;
+}
+
+.icon-class{
+    font-size: 28px;
+    width: 100%;
+    text-align: center;
+}
