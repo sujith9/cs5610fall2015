@@ -32,3 +32,17 @@
 .tab-panes-margin{
     margin-top: 25px;
 }
+
+.form-field-margin{
+    padding-left: 0px;
+}
+
+hr{
+    border: none;
+    height: 1px;
+    background-color: #333;
+}
+
+.row-width{
+    width: 80%;
+}
