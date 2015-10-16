@@ -3,99 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-<header>
-
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="home.html">Form Maker</a>
+    <h1 class="body-padding">Profile</h1>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">Username:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputUsername3" placeholder="Username">
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>&nbsp;Username</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-</header>
-<div class="container">
-    <div class="row row-full">
-        <div class="col-xs-12 col-md-3">
-            <ul class="nav nav-pills nav-stacked bg-info">
-                <li><a href="home.html">Home</a></li>
-                <li class="active"><a href="profile.html">Profile</a></li>
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="forms.html">Forms</a></li>
-            </ul>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">Password:</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+            </div>
         </div>
 
-        <div class="col-xs-12 col-md-9">
-            <h1 class="body-padding">Profile</h1>
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label">Username:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputUsername3" placeholder="Username">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-3 control-label">Password:</label>
-                    <div class="col-sm-9">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="firstName3" class="col-sm-3 control-label">First Name:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="firstName3" placeholder="First Name">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="lastName3" class="col-sm-3 control-label">Last Name:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="lastName3" placeholder="Last Name">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label">Email:</label>
-                    <div class="col-sm-9">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-9 col-sm-3">
-                        <button type="submit" class="btn btn-primary btn-default btn-block">Update</button>
-                    </div>
-                </div>
-            </form>
+        <div class="form-group">
+            <label for="firstName3" class="col-sm-3 control-label">First Name:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="firstName3" placeholder="First Name">
+            </div>
         </div>
-    </div>
-</div>
 
+        <div class="form-group">
+            <label for="lastName3" class="col-sm-3 control-label">Last Name:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="lastName3" placeholder="Last Name">
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">Email:</label>
+            <div class="col-sm-9">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            </div>
+        </div>
 
+        <div class="form-group">
+            <div class="col-sm-offset-9 col-sm-3">
+                <button type="submit" class="btn btn-primary btn-default btn-block">Update</button>
+            </div>
+        </div>
+    </form>
 </body>
 </html>
