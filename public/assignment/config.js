@@ -1,11 +1,11 @@
 (function(){
 
-    "use strict"
+    "use strict";
     angular
         .module("FormBuilderApp", ["ngRoute"])
         .config(function($routeProvider){
             $routeProvider
-                .when("/", {
+                .when("/home", {
                     templateUrl: "home.html"
                 })
                 .when("/register", {
@@ -24,7 +24,7 @@
                     templateUrl: "forms.html"
                 })
                 .otherwise({
-                    redirectTo: "/"
+                    redirectTo: "home"
                 });
         });
 })();
