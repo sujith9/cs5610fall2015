@@ -17,23 +17,20 @@
     <script src="header/header.controller.js"></script>
     <script src="sidebar/sidebar.controller.js"></script>
 </head>
+
 <body>
-<header>
-    <div ng-include src="'header/header.view.html'"></div>
+    <header>
+        <div ng-include src="'header/header.view.html'"></div>
+    </header>
+    <div class="container">
+        <div class="row row-full">
+            <div class="col-xs-12 col-md-3">
+                <div ng-include src="'sidebar/sidebar.view.html'"></div>
+            </div>
 
-</header>
-<div class="container">
-    <div class="row row-full">
-        <div class="col-xs-12 col-md-3" ng-controller="SidebarController">
-            <div ng-include src="'sidebar/sidebar.view.html'"></div>
-        </div>
-
-        <div class="col-xs-12 col-md-9" ng-view>
+            <div class="col-xs-12 col-md-9" ng-view>
+            </div>
         </div>
     </div>
-</div>
-
-
-
 </body>
 </html>
