@@ -18,23 +18,23 @@
 
         return service;
 
-        function findUserByUsernameAndPassword(){
+        function findUserByUsernameAndPassword(username, password, callback){
 
         }
 
-        function findAllUsers(){
+        function findAllUsers(callback){
 
         }
 
-        function createUser(){
+        function createUser(user, callback){
 
         }
 
-        function deleteUserById(){
+        function deleteUserById(userId, callback){
 
         }
 
-        function updateUser(){
+        function updateUser(userId, user, callback){
 
         }
     }
