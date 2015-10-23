@@ -6,7 +6,12 @@
         .factory("UserService", UserService);
 
     function UserService(){
-        var currentUsers = [];
+
+        var currentUsers = [
+            {username : 'alice', password : 'password', email : 'alice@cnn.com'},
+            {username : 'bob', password : 'password', email : 'bob@bbc.com'},
+            {username : 'charlie', password : 'password', email : 'charlie@neu.edu'}
+        ];
 
         var service = {
             findUserByUsernameAndPassword : findUserByUsernameAndPassword,
@@ -14,28 +19,70 @@
             createUser : createUser,
             deleteUserById : deleteUserById,
             updateUser : updateUser
-        }
+        };
 
         return service;
 
         function findUserByUsernameAndPassword(username, password, callback){
+            var user = null;
+            var len = currentUsers.length;
+            for(var i = 0; i < len; i++){
+                if(currentUsers[i]['username'] == username && currentUsers[i]['password'] == password){
+                    user = currentUsers[i];
+                }
+            }
+
+            return user;
 
         }
 
         function findAllUsers(callback){
-
+            return currentUsers;
         }
 
         function createUser(user, callback){
+            user["id"] = guid();
+            currentUsers.push(user);
 
+            return user;
         }
 
         function deleteUserById(userId, callback){
+            var len = currentUsers.length;
 
+            for(var i = 0; i < len; i++){
+                if(currentUsers[i]["id"] == userId){
+                    currentUsers.splice(i, 1);
+                }
+            }
+
+            return currentUsers;
         }
 
         function updateUser(userId, user, callback){
+            var len = currentUsers.length;
 
+            for(var i = 0; i < len; i++){
+                if(currentUsers[i]["id"] == userId){
+                    currentUsers[i]["password"] = user["password"];
+                    currentUsers[i]["email"] = user["email"];
+
+                    return currentUsers[i];
+                }
+            }
+
+            return user;
+        }
+
+        // Using the implementation provided by Prof. Jose on Piazza
+        function guid() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1);
+            }
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                s4() + '-' + s4() + s4() + s4();
         }
     }
 

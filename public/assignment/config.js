@@ -12,7 +12,8 @@
                     templateUrl: "register.html"
                 })
                 .when("/login", {
-                    templateUrl: "login.html"
+                    templateUrl: "login/login.view.html",
+                    controller: "LoginController"
                 })
                 .when("/profile", {
                     templateUrl: "profile.html"
