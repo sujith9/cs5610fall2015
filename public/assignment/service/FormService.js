@@ -16,19 +16,49 @@
         return service;
 
         function createFormForUser(userId, form, callback){
+            form["id"] = guid();
+            form["userid"] = userId;
 
+            forms.push(form);
+
+            return form
         }
 
         function findAllFormsForUser(userId, callback){
+            var formsForUser = [];
+            var len = forms.length;
 
+            for(var i = 0; i < len; i++){
+                if(forms[i]["userid"] == userId){
+                    formsForUser.push(forms[i])
+                }
+            }
+
+            return formsForUser;
         }
 
         function deleteFormById(formId, callback){
+            var len = forms.length;
 
+            for(var i = 0; i < len; i++){
+                if(forms[i]["id"] == formId){
+                    forms.splice(i, 1);
+                }
+            }
+
+            return forms;
         }
 
         function updateFormById(formId, newForm, callback){
+            var len = forms.length;
 
+            for(var i = 0; i < len; i++){
+                if(forms[i]["id"] == formId){
+                    newForm["userid"] = forms[i]["userid"]
+                    forms[i] = newForm;
+                }
+            }
+            return newForm;
         }
 
         // Using the implementation provided by Prof. Jose on Piazza

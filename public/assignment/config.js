@@ -6,7 +6,7 @@
         .config(function($routeProvider){
             $routeProvider
                 .when("/home", {
-                    templateUrl: "home.html"
+                    templateUrl: "home/home.view.html"
                 })
                 .when("/register", {
                     templateUrl: "register.html"
@@ -25,7 +25,7 @@
                     templateUrl: "forms.html"
                 })
                 .otherwise({
-                    redirectTo: "home"
+                    redirectTo: "/home"
                 });
         });
 })();
