@@ -64,14 +64,11 @@
 
             for(var i = 0; i < len; i++){
                 if(currentUsers[i]["id"] == userId){
-                    currentUsers[i]["password"] = user["password"];
-                    currentUsers[i]["email"] = user["email"];
+                    currentUsers[i] = user;
 
                     return currentUsers[i];
                 }
             }
-
-            return user;
         }
 
         // Using the implementation provided by Prof. Jose on Piazza

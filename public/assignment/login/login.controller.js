@@ -5,16 +5,17 @@
         .module("FormBuilderApp")
         .controller("LoginController", LoginController);
 
-    function LoginController($scope, UserService, $location){
+    function LoginController($scope, UserService, $location, $rootScope){
 
         $scope.login = function(){
-            var user = UserService.findUserByUsernameAndPassword($scope.username, $scope.password, "adsfadsf");
+            var user = UserService.findUserByUsernameAndPassword($scope.username, $scope.password, "TO-DO");
 
             if(user !== null){
-                alert(user.username);
+                $rootScope.user = user;
+                $location.path("/profile")
             }
             else{
-                alert("No user.")
+                $scope.error = "Incorrect username or password."
             }
         };
 

@@ -9,14 +9,16 @@
                     templateUrl: "home/home.view.html"
                 })
                 .when("/register", {
-                    templateUrl: "register.html"
+                    templateUrl: "register/register.view.html",
+                    controlller: "RegisterController"
                 })
                 .when("/login", {
                     templateUrl: "login/login.view.html",
                     controller: "LoginController"
                 })
                 .when("/profile", {
-                    templateUrl: "profile.html"
+                    templateUrl: "profile/profile.view.html",
+                    controller: "ProfileController"
                 })
                 .when("/admin", {
                     templateUrl: "admin.html"

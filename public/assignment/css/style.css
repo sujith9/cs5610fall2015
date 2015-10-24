@@ -46,3 +46,7 @@ hr{
 .row-width{
     width: 80%;
 }
+
+.display-error{
+    color: red;
+}
