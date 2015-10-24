@@ -23,8 +23,9 @@
                 .when("/admin", {
                     templateUrl: "admin.html"
                 })
-                .when("/forms", {
-                    templateUrl: "forms.html"
+                .when("/form", {
+                    templateUrl: "form/form.view.html",
+                    controller: "FormController"
                 })
                 .otherwise({
                     redirectTo: "/home"

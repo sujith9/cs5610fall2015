@@ -1,0 +1,62 @@
+<div ng-controller="FormController">
+    <h1 class="body-padding">Forms</h1>
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#/form">Forms</a></li>
+        <li role="presentation"><a href="form-fields.html">Fields</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="forms">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Form name</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Action</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" ng-model="formname" class="form-control" placeholder="name">
+                        </td>
+
+                        <td>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <span ng-click="addForm()" class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Registration Form
+                        </td>
+
+                        <td>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="fields">
+
+
+        </div>
+    </div>
+</div>
