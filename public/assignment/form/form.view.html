@@ -29,24 +29,24 @@
                                     <span ng-click="addForm()" class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
                                 </div>
                                 <div class="col-xs-6">
-                                    <span class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>
+                                    <span ng-click="updateForm()" class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>
                                 </div>
                             </div>
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr ng-repeat="form in forms">
                         <td>
-                            Registration Form
+                            {{form.name}}
                         </td>
 
                         <td>
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <span class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                    <span ng-click="deleteForm('$index')" class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
                                 </div>
                                 <div class="col-xs-6">
-                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                    <span ng-click="selectForm('$index')" class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
                                 </div>
                             </div>
                         </td>
@@ -59,4 +59,6 @@
 
         </div>
     </div>
+
+    {{forms}}
 </div>

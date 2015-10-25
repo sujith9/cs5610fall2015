@@ -17,16 +17,14 @@
         $scope.email = currentUser.email;
 
         $scope.update = function(){
-            $scope.update = function(){
-                var updatedUser = {id: userId, username: $scope.username,
-                    password: $scope.password,
-                    firstname: $scope.firstname,
-                    lastname: $scope.lastname,
-                    email: $scope.email
-                };
+            var updatedUser = {id: userId, username: $scope.username,
+                password: $scope.password,
+                firstname: $scope.firstname,
+                lastname: $scope.lastname,
+                email: $scope.email
+            };
 
-                $rootScope.user = UserService.updateUser(userId, updatedUser, "TO-DO");
-            }
+            $rootScope.user = UserService.updateUser(userId, updatedUser, "TO-DO");
         }
     }
 })();

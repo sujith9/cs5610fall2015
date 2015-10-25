@@ -8,9 +8,10 @@
     function UserService(){
 
         var currentUsers = [
-            {username : 'alice', password : 'password', email : 'alice@cnn.com'},
-            {username : 'bob', password : 'password', email : 'bob@bbc.com'},
-            {username : 'charlie', password : 'password', email : 'charlie@neu.edu'}
+            {"id":"049e6016-4eb9-83ed-937e-f86f42459bff","username":"bob","password":"b","firstname":"Bob","lastname":"Marley","email":"bob@gmail.com"}
+            //{username : 'alice', password : 'password', email : 'alice@cnn.com'},
+            //{username : 'bob', password : 'password', email : 'bob@bbc.com'},
+            //{username : 'charlie', password : 'password', email : 'charlie@neu.edu'}
         ];
 
         var service = {
