@@ -16,25 +16,25 @@
                     <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Action</th>
                 </tr>
 
+                <tr>
+                    <th>
+                        <input type="text" ng-model="form.name" class="form-control" placeholder="name">
+                    </th>
+
+                    <th>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <span ng-click="addForm()" class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span ng-click="updateForm()" class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <input type="text" ng-model="formname" class="form-control" placeholder="name">
-                        </td>
-
-                        <td>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <span ng-click="addForm()" class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <span ng-click="updateForm()" class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-
                     <tr ng-repeat="form in forms">
                         <td>
                             {{form.name}}
@@ -43,10 +43,10 @@
                         <td>
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <span ng-click="deleteForm('$index')" class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                    <span ng-click="deleteForm($index)" class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
                                 </div>
                                 <div class="col-xs-6">
-                                    <span ng-click="selectForm('$index')" class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                    <span ng-click="selectForm($index)" class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
                                 </div>
                             </div>
                         </td>

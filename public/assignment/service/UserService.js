@@ -54,6 +54,7 @@
             for(var i = 0; i < len; i++){
                 if(currentUsers[i]["id"] == userId){
                     currentUsers.splice(i, 1);
+                    break;
                 }
             }
 

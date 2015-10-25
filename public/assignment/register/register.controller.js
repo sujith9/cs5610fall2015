@@ -7,7 +7,9 @@
 
     function RegisterController($scope, $rootScope, UserService, $location){
 
-        $scope.register = function(){
+        $scope.register = register;
+
+        function register(){
             var newUserTemp = {username: $scope.username, password: $scope.password, email: $scope.email};
             var newUser = UserService.createUser(newUserTemp, "TO-DO");
 
@@ -16,7 +18,7 @@
                 alert(newUser.id);
                 $location.path("/profile");
             }
-        };
+        }
 
     }
 }());

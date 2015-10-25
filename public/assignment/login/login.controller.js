@@ -8,7 +8,9 @@
     function LoginController($scope, UserService, $location, $rootScope){
         $scope.allUsers = UserService.findAllUsers("TO-DO");
 
-        $scope.login = function(){
+        $scope.login = login;
+
+        function login(){
             var user = UserService.findUserByUsernameAndPassword($scope.username, $scope.password, "TO-DO");
 
             if(user !== null){
@@ -18,7 +20,7 @@
             else{
                 $scope.error = "Incorrect username or password."
             }
-        };
+        }
 
     }
 })();

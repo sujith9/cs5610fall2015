@@ -1,4 +1,6 @@
 (function(){
+    "use strict";
+
     angular
         .module("FormBuilderApp")
         .factory("FormService", FormService)
@@ -39,10 +41,10 @@
 
         function deleteFormById(formId, callback){
             var len = forms.length;
-
             for(var i = 0; i < len; i++){
-                if(forms[i]["id"] == formId){
+                if(forms[i].id == formId){
                     forms.splice(i, 1);
+                    break;
                 }
             }
 
@@ -54,8 +56,9 @@
 
             for(var i = 0; i < len; i++){
                 if(forms[i]["id"] == formId){
-                    newForm["userid"] = forms[i]["userid"]
+                    newForm["userid"] = forms[i]["userid"];
                     forms[i] = newForm;
+                    break;
                 }
             }
             return newForm;
