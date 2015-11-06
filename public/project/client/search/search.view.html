@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Backpack Buddy - Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row row-full">
+            <div class="navbar-header col-md-4">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Backpack Buddy</a>
+            </div>
+            <div class="col-md-4" align="center">
+                <form class="navbar-form" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Boston">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="col-md-4" align="right">
+                <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" data-toggle="modal" data-target="#registerModal"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 align="center" class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputUsername" class="col-sm-3 control-label">Username:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-sm-3 control-label">Password:</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-8 col-sm-4">
+                            <button class="btn btn-primary btn-default btn-block">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="registerModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 align="center" class="modal-title">Register</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">Username:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputUsername3" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-3 control-label">Password:</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-3 control-label">Verify Password:</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Verify Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">Email:</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-9 col-sm-3">
+                            <button type="submit" class="btn btn-primary btn-default btn-block">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <h1>Search Results</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/47/boston.jpg" height="150" width="250">
+        </div>
+        <div class="col-md-9">
+            <h2>Boston</h2>
+            <p>
+                The capital of <b><a href="http://en.wikivoyage.org/wiki/Massachusetts#Massachusetts">Massachusetts</a></b> and de-facto capital of <b><a href="http://en.wikivoyage.org/wiki/New_England#New England">New England</a></b>, <b>Boston</b> is primarily known for three things: its academics, its sports, and its history. Its plethora of museums, historical sights, live performances, and a lively dining and shopping scene make it one of the most popular tourist destinations in the country. Boston is one of the few old American cities that has managed to preserve a respectable chunk of its history, with buildings that pre-date the republic dotted across the city. But Boston isn't a city to dwell
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/47/boston.jpg" height="150" width="250">
+        </div>
+        <div class="col-md-9">
+            <h2>Boston, Massachusetts</h2>
+            <p>
+                The capital of <b><a href="http://en.wikivoyage.org/wiki/Massachusetts#Massachusetts">Massachusetts</a></b> and de-facto capital of <b><a href="http://en.wikivoyage.org/wiki/New_England#New England">New England</a></b>, <b>Boston</b> is primarily known for three things: its academics, its sports, and its history. Its plethora of museums, historical sights, live performances, and a lively dining and shopping scene make it one of the most popular tourist destinations in the country. Boston is one of the few old American cities that has managed to preserve a respectable chunk of its history, with buildings that pre-date the republic dotted across the city. But Boston isn't a city to dwell
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/47/boston.jpg" height="150" width="250">
+        </div>
+        <div class="col-md-9">
+            <h2>Boston/East Boston</h2>
+            <p>
+                The capital of <b><a href="http://en.wikivoyage.org/wiki/Massachusetts#Massachusetts">Massachusetts</a></b> and de-facto capital of <b><a href="http://en.wikivoyage.org/wiki/New_England#New England">New England</a></b>, <b>Boston</b> is primarily known for three things: its academics, its sports, and its history. Its plethora of museums, historical sights, live performances, and a lively dining and shopping scene make it one of the most popular tourist destinations in the country. Boston is one of the few old American cities that has managed to preserve a respectable chunk of its history, with buildings that pre-date the republic dotted across the city. But Boston isn't a city to dwell
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2f/47/boston.jpg" height="150" width="250">
+        </div>
+        <div class="col-md-9">
+            <h2>Boston/South Boston</h2>
+            <p>
+                The capital of <b><a href="http://en.wikivoyage.org/wiki/Massachusetts#Massachusetts">Massachusetts</a></b> and de-facto capital of <b><a href="http://en.wikivoyage.org/wiki/New_England#New England">New England</a></b>, <b>Boston</b> is primarily known for three things: its academics, its sports, and its history. Its plethora of museums, historical sights, live performances, and a lively dining and shopping scene make it one of the most popular tourist destinations in the country. Boston is one of the few old American cities that has managed to preserve a respectable chunk of its history, with buildings that pre-date the republic dotted across the city. But Boston isn't a city to dwell
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
