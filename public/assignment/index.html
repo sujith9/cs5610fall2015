@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Welcome!</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="client/css/style.css" rel="stylesheet">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
@@ -14,24 +14,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
     <script src="app.js"></script>
     <script src="config.js"></script>
-    <script src="header/header.controller.js"></script>
-    <script src="sidebar/sidebar.controller.js"></script>
-    <script src="service/UserService.js"></script>
-    <script src="service/FormService.js"></script>
-    <script src="login/login.controller.js"></script>
-    <script src="register/register.controller.js"></script>
-    <script src="profile/profile.controller.js"></script>
-    <script src="form/form.controller.js"></script>
+    <script src="client/views/header/header.controller.js"></script>
+    <script src="client/views/sidebar/sidebar.controller.js"></script>
+    <script src="client/services/UserService.js"></script>
+    <script src="client/services/FormService.js"></script>
+    <script src="client/views/login/login.controller.js"></script>
+    <script src="client/views/register/register.controller.js"></script>
+    <script src="client/views/profile/profile.controller.js"></script>
+    <script src="client/views/form/form.controller.js"></script>
 </head>
 
 <body>
     <header>
-        <div ng-include src="'header/header.view.html'"></div>
+        <div ng-include src="'client/views/header/header.view.html'"></div>
     </header>
     <div class="container">
         <div class="row row-full">
             <div class="col-xs-12 col-md-3">
-                <div ng-include src="'sidebar/sidebar.view.html'"></div>
+                <div ng-include src="'client/views/sidebar/sidebar.view.html'"></div>
             </div>
 
             <div class="col-xs-12 col-md-9" ng-view>
