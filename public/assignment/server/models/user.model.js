@@ -1,7 +1,7 @@
 "use strict";
 var users = require("./user.mock.json");
 
-module.exports = function(app) {
+module.exports = function() {
 
     var api ={
         Create: Create,
@@ -67,10 +67,10 @@ module.exports = function(app) {
         for(var i = 0; i < len; i++){
             if(users[i]["id"] == userId){
                 users[i] = user;
-
-                return users[i];
             }
         }
+
+        return users;
     }
 
     function Delete(userId){
@@ -82,5 +82,6 @@ module.exports = function(app) {
                 break;
             }
         }
+        return users;
     }
 };
