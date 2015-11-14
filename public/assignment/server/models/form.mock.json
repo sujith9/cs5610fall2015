@@ -17,7 +17,7 @@
         "userId": 234,
         "fields": [ {"id": "777", "label": "Title", "type": "TEXT", "placeholder": "Title"},
                     {"id": "888", "label": "Description", "type": "TEXTAREA", "placeholder": "Title"},
-                    {"id": "999", "label": "Due Date", "type": "DATE"},
+                    {"id": "999", "label": "Due Date", "type": "DATE"}
         ]
     }
 ]

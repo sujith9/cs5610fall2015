@@ -20,7 +20,8 @@ module.exports = function(app){
 
     app.delete('/api/assignment/form/:formId', function(req, res){
         var formId = req.params.formId;
-        model.Delete(formId);
+        var forms = model.Delete(formId);
+        res.json(forms)
     });
 
     app.post('/api/assignment/user/:userId/form', function (req, res) {
