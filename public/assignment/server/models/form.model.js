@@ -143,6 +143,7 @@ module.exports = function(){
     function addNewFieldForForm(formId, newForm){
         for(var i = 0; i < forms.length; i++){
             if(forms[i]["id"] == formId){
+                newForm['id'] = uuid.v1();
                 forms[i]["fields"].push(newForm);
                 return forms[i]["fields"]
             }
