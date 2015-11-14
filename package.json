@@ -25,7 +25,8 @@
   "dependencies": {
     "body-parser": "^1.14.1",
     "express": "~3.4.4",
-    "guid": "0.0.12"
+    "guid": "0.0.12",
+    "uuid": "^2.0.1"
   },
   "devDependencies": {},
   "bundleDependencies": [],

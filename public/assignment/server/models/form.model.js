@@ -1,6 +1,8 @@
 "use strict";
 var forms = require("./form.mock.json");
-module.exports = function(app){
+var uuid = require('uuid');
+
+module.exports = function(){
 
 
     var api = {
@@ -9,7 +11,8 @@ module.exports = function(app){
         FindById: FindById,
         Update: Update,
         Delete: Delete,
-        findFormByTitle: findFormByTitle
+        findFormByTitle: findFormByTitle,
+        findFormsForUser: findFormsForUser
     };
 
     return api;
@@ -26,7 +29,9 @@ module.exports = function(app){
         return form;
     }
 
-    function Create(form){
+    function Create(userId, form){
+        form['userId'] = userId;
+        form['id'] = uuid.v1();
         forms.push(form);
         return forms;
     }
@@ -68,6 +73,19 @@ module.exports = function(app){
                 break;
             }
         }
+    }
+
+    function findFormsForUser(userId){
+        var formsForUser = [];
+        var len = forms.length;
+
+        for(var i = 0; i < len; i++){
+            if(forms[i]["userId"] == userId){
+                formsForUser.push(forms[i])
+            }
+        }
+
+        return formsForUser;
     }
 
 };

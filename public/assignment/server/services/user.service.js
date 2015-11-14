@@ -34,13 +34,6 @@ module.exports = function(app){
         res.json(user);
     });
 
-    app.get('/api/assignment/user?username=:username', function(req, res){
-        var username = req.query.username;
-        alert(username);
-        var user = model.findUserByUsername(username);
-        res.json(user);
-    });
-
     app.put('/api/assignment/user/:id', function (req, res) {
         var id = req.params.id;
         var newUser = req.body;
