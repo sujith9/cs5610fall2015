@@ -1,8 +1,8 @@
 "use strict";
 
-var model = require("../models/form.model.js")();
+//var model = require("../models/form.model.js")();
 
-module.exports = function(app){
+module.exports = function(app, model){
 
     // Returns an array of forms belonging to a user whose id is passed
     app.get('/api/assignment/user/:userId/form', function(req, res){

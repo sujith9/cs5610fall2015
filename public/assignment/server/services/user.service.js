@@ -1,8 +1,8 @@
 "use strict";
 
-var model = require("../models/user.model.js")();
+//var model = require("../models/user.model.js")();
 
-module.exports = function(app){
+module.exports = function(app, model){
 
     app.get('/api/assignment/user', function(req, res){
         var username = req.query.username;
