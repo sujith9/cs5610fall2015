@@ -7,26 +7,32 @@
 
     function ProfileController($scope, UserService, $rootScope){
 
-        var currentUser = $rootScope.user;
-        var userId = currentUser.id;
+        var profileModel = this;
 
-        $scope.username = currentUser.username;
-        $scope.password = currentUser.password;
-        $scope.firstname = currentUser.firstname;
-        $scope.lastname = currentUser.lastname;
-        $scope.email = currentUser.email;
+        profileModel.update = update;
 
-        $scope.update = update;
+        //var currentUser = $rootScope.user;
+        //var userId = currentUser.id;
 
-        function update(){
-            var updatedUser = {id: userId, username: $scope.username,
-                password: $scope.password,
-                firstname: $scope.firstname,
-                lastname: $scope.lastname,
-                email: $scope.email
+        profileModel.user = $rootScope.user;
+        var userId = profileModel.user.id;
+        //$scope.username = currentUser.username;
+        //$scope.password = currentUser.password;
+        //$scope.firstname = currentUser.firstname;
+        //$scope.lastname = currentUser.lastname;
+        //$scope.email = currentUser.email;
+
+
+        function update(user){
+            var updatedUser = {id: userId,
+                username: user.username,
+                password: user.password,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email
             };
 
-            $rootScope.user = UserService.updateUser(userId, updatedUser, "TO-DO");
+            $rootScope.user = UserService.updateUser(userId, updatedUser);
         }
     }
 })();

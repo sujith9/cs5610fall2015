@@ -6,17 +6,19 @@
         .controller("RegisterController", RegisterController);
 
     function RegisterController($scope, $rootScope, UserService, $location){
+        var registerModel = this;
+        registerModel.register = register;
 
-        $scope.register = register;
-
-        function register(){
-            var newUserTemp = {username: $scope.username, password: $scope.password, email: $scope.email};
-            var newUser = UserService.createUser(newUserTemp, "TO-DO");
-
-            $rootScope.user = newUser;
-            if(newUser !== null) {
-                $location.path("/profile");
-            }
+        function register(username, password, email){
+            var newUserTemp = {"username": username, "password": password, "email": email};
+            UserService.createUser(newUserTemp).then(function(response){
+                alert(response);
+                if(response !== null || response != undefined) {
+                    $rootScope.user = response;
+                    registerModel.user = response;
+                    $location.path("/profile");
+                }
+            });
         }
 
     }

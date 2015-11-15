@@ -1,5 +1,6 @@
 "use strict";
 var users = require("./user.mock.json");
+var uuid = require('uuid');
 
 module.exports = function() {
 
@@ -41,8 +42,9 @@ module.exports = function() {
     }
 
     function Create(user){
+        user['id'] = uuid.v1();
         users.push(user);
-        return users;
+        return users[users.length-1];
     }
 
     function FindAll(){

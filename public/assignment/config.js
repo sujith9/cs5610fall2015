@@ -10,15 +10,15 @@
                 })
                 .when("/register", {
                     templateUrl: "client/views/register/register.view.html",
-                    controlller: "RegisterController"
+                    controller: "RegisterController as registerModel"
                 })
                 .when("/login", {
                     templateUrl: "client/views/login/login.view.html",
-                    controller: "LoginController"
+                    controller: "LoginController as loginModel"
                 })
                 .when("/profile", {
                     templateUrl: "client/views/profile/profile.view.html",
-                    controller: "ProfileController"
+                    controller: "ProfileController as profileModel"
                 })
                 .when("/admin", {
                     templateUrl: "admin.html"

@@ -3,35 +3,46 @@
 
     angular
         .module("FormBuilderApp")
-        .factory("UserService", UserService);
+        .factory("FieldService", FieldService);
 
-    function UserService($http, $q){
 
+    function FieldService($http, $q){
         var service = {
-            findUserByUsernameAndPassword : findUserByUsernameAndPassword,
-            findAllUsers : findAllUsers,
-            createUser : createUser,
-            deleteUserById : deleteUserById,
-            updateUser : updateUser
+            createFieldForForm: createFieldForForm,
+            getFieldsForForm: getFieldsForForm,
+            getFieldForForm: getFieldForForm,
+            deleteFieldFromForm: deleteFieldFromForm,
+            updateField: updateField
         };
 
         return service;
 
-        function findUserByUsernameAndPassword(username, password){
+        function createFieldForForm(formId, field){
             var deferred = $q.defer();
-            var url = "http://localhost:3000/api/assignment/user?username="+ username + "&password=" + password;
+            var url = "http://localhost:3000/api/assignment/form/" + formId +"/field";
+
+            $http.post(url, field)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+
+            return deferred.promise;
+        }
+
+        function getFieldsForForm(formId){
+            var deferred = $q.defer();
+            var url = "http://localhost:3000/api/assignment/form/"+ formId +"/field";
             $http.get(url)
                 .success(function(response){
                     deferred.resolve(response);
                 });
 
             return deferred.promise;
-
         }
 
-        function findAllUsers(){
+        function getFieldForForm(formId, fieldId){
             var deferred = $q.defer();
-            var url = "http://localhost:3000/api/assignment/user";
+            var url = "http://localhost:3000/api/assignment/form/"+ formId +"/field/"+ fieldId;
             $http.get(url)
                 .success(function(response){
                     deferred.resolve(response);
@@ -40,21 +51,9 @@
             return deferred.promise;
         }
 
-        function createUser(user){
+        function deleteFieldFromForm(formId, fieldId){
             var deferred = $q.defer();
-            var url = "http://localhost:3000/api/assignment/user";
-
-            $http.post(url, user)
-                .success(function(response){
-                    deferred.resolve(response);
-                });
-
-            return deferred.promise;
-        }
-
-        function deleteUserById(userId, callback){
-            var deferred = $q.defer();
-            var url = "http://localhost:3000/api/assignment/user" + userId;
+            var url = "http://localhost:3000/api/assignment/form/"+ formId +"/field/"+ fieldId;
 
             $http.delete(url)
                 .success(function(response){
@@ -64,17 +63,17 @@
             return deferred.promise;
         }
 
-        function updateUser(userId, user, callback){
+        function updateField(formId, fieldId, field){
             var deferred = $q.defer();
-            var url = "http://localhost:3000/api/assignment/user" + userId;
+            var url = "http://localhost:3000/api/assignment/form/"+ formId +"/field/"+ fieldId;
 
-            $http.put(url, user)
+            $http.put(url, field)
                 .success(function(response){
                     deferred.resolve(response);
                 });
 
             return deferred.promise;
         }
-    }
 
-}());
+    }
+});

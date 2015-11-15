@@ -1,7 +1,5 @@
 "use strict";
 
-//var model = require("../models/form.model.js")();
-
 module.exports = function(app, model){
 
     // Returns an array of forms belonging to a user whose id is passed

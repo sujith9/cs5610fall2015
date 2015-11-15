@@ -1,49 +1,47 @@
 "use strict";
 
-//var model = require("../models/user.model.js")();
-
-module.exports = function(app, model){
+module.exports = function(app, userModel){
 
     app.get('/api/assignment/user', function(req, res){
         var username = req.query.username;
         var password = req.query.password;
         if (username != null && password == null) {
-            var user = model.findUserByUsername(username);
+            var user = userModel.findUserByUsername(username);
             res.json(user);
         }
         else if (username != null && password != null){
-            var user = model.findUserByCredentials({'username':username, 'password':password})
+            var user = userModel.findUserByCredentials({'username':username, 'password':password})
             res.json(user);
         }
         else {
-            var users = model.FindAll();
+            var users = userModel.FindAll();
             res.json(users);
         }
     });
 
-
+    // Create new user
     app.post('/api/assignment/user', function (req, res) {
         var newUser = req.body;
-        var users = model.Create(newUser);
-        res.json(users);
+        var user = userModel.Create(newUser);
+        res.json(user);
     });
 
     app.get('/api/assignment/user/:id', function(req, res){
         var id = req.params.id;
-        var user = model.FindById(id);
+        var user = userModel.FindById(id);
         res.json(user);
     });
 
     app.put('/api/assignment/user/:id', function (req, res) {
         var id = req.params.id;
         var newUser = req.body;
-        var users = model.Update(id, newUser);
+        var users = userModel.Update(id, newUser);
         res.json(users);
     });
 
     app.delete('/api/assignment/user/:id', function(req, res){
         var id = req.params.id;
-        var users = model.Delete(id);
+        var users = userModel.Delete(id);
         res.json(users);
     });
 
