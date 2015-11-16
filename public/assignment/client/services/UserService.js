@@ -52,7 +52,7 @@
             return deferred.promise;
         }
 
-        function deleteUserById(userId, callback){
+        function deleteUserById(userId){
             var deferred = $q.defer();
             var url = "http://localhost:3000/api/assignment/user" + userId;
 
@@ -64,9 +64,9 @@
             return deferred.promise;
         }
 
-        function updateUser(userId, user, callback){
+        function updateUser(userId, user){
             var deferred = $q.defer();
-            var url = "http://localhost:3000/api/assignment/user" + userId;
+            var url = "http://localhost:3000/api/assignment/user/" + userId;
 
             $http.put(url, user)
                 .success(function(response){

@@ -65,14 +65,16 @@ module.exports = function() {
 
     function Update(userId, user){
         var len = users.length;
+        var updatedUser = null;
 
         for(var i = 0; i < len; i++){
             if(users[i]["id"] == userId){
                 users[i] = user;
+                updatedUser = users[i];
             }
         }
 
-        return users;
+        return updatedUser;
     }
 
     function Delete(userId){

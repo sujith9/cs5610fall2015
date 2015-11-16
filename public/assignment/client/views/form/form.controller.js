@@ -6,46 +6,59 @@
         .module("FormBuilderApp")
         .controller("FormController", FormController);
 
-    function FormController($scope, $location, $rootScope, FormService){
-        var userId = $rootScope.user.id;
-        $scope.forms = FormService.findAllFormsForUser(userId, "TO-DO");
+    function FormController($rootScope, FormService){
+        var formModel = this;
 
-        $scope.addForm = addForm;
-        $scope.updateForm = updateForm;
-        $scope.deleteForm = deleteForm;
-        $scope.selectForm = selectForm;
+        var userId = $rootScope.user.id;
+
+        findFormsForUser(userId);
+
+        formModel.addForm = addForm;
+        formModel.updateForm = updateForm;
+        formModel.deleteForm = deleteForm;
+        formModel.selectForm = selectForm;
+
+
+        function findFormsForUser(userId){
+            FormService.findAllFormsForUser(userId).then(function(response){
+                formModel.forms = response;
+            });
+        }
 
 
         function addForm(){
-            FormService.createFormForUser(userId, {name: $scope.form.name}, "TO-DO");
-
-            $scope.forms = FormService.findAllFormsForUser(userId, "TO-DO");
+            FormService.createFormForUser(userId, formModel.form).then(function(response){
+                formModel.forms = response;
+            });
         }
 
          function updateForm(){
-            //$scope.forms[$scope.selectedFormIndex].name = form.name;
-
-            var formId = $scope.forms[$scope.selectedFormIndex].id;
-
-
-            FormService.updateFormById(formId, $scope.form, "TO-DO");
-            $scope.forms = FormService.findAllFormsForUser(userId, "TO-DO");
-
+             var formId = formModel.forms[formModel.selectedFormIndex].id;
+             FormService.updateFormById(formId, formModel.form).then(function(response){
+                 formModel.forms = response;
+                 console.log(response);
+             });
         }
 
          function deleteForm(index){
-            var formId = $scope.forms[index].id;
-            $scope.forms = FormService.deleteFormById(formId, "TO-DO");
+             var formId = formModel.forms[index].id;
+             alert(formId);
+
+             FormService.deleteFormById(formId).then(function(response){
+                 formModel.forms = response;
+             });
         }
 
          function selectForm(index){
-            $scope.selectedFormIndex = index;
+             formModel.selectedFormIndex = index;
 
-            $scope.form = {
-                id: $scope.forms[index].id,
-                name: $scope.forms[index].name,
-                userid: $scope.forms[index].userid
-            };
+             var tempForm = formModel.forms[index].constructor();
+
+             for (var attr in formModel.forms[index]) {
+                 if (formModel.forms[index].hasOwnProperty(attr)) tempForm[attr] = formModel.forms[index][attr];
+             }
+
+             formModel.form = tempForm;
         }
     }
 })();

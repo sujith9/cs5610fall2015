@@ -10,17 +10,8 @@
         var profileModel = this;
 
         profileModel.update = update;
-
-        //var currentUser = $rootScope.user;
-        //var userId = currentUser.id;
-
         profileModel.user = $rootScope.user;
         var userId = profileModel.user.id;
-        //$scope.username = currentUser.username;
-        //$scope.password = currentUser.password;
-        //$scope.firstname = currentUser.firstname;
-        //$scope.lastname = currentUser.lastname;
-        //$scope.email = currentUser.email;
 
 
         function update(user){
@@ -32,7 +23,10 @@
                 email: user.email
             };
 
-            $rootScope.user = UserService.updateUser(userId, updatedUser);
+            UserService.updateUser(userId, updatedUser).then(function(response){
+                profileModel.user = response;
+                $rootScope.user = response;
+            });
         }
     }
 })();

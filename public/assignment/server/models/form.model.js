@@ -38,6 +38,7 @@ module.exports = function(){
     function Create(userId, form){
         form['userId'] = userId;
         form['id'] = uuid.v1();
+        form['fields'] = [];
         forms.push(form);
         return forms;
     }
@@ -64,12 +65,13 @@ module.exports = function(){
 
         for(var i = 0; i < len; i++){
             if(forms[i]["id"] == formId){
+                var userId = form["userId"];
                 form["id"] = formId;
                 form["userId"] = forms[i]["userId"];
                 forms[i] = form;
-                return forms[i];
             }
         }
+        return findFormsForUser(userId);
     }
 
     function Delete(formId){

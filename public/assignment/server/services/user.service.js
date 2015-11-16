@@ -35,8 +35,8 @@ module.exports = function(app, userModel){
     app.put('/api/assignment/user/:id', function (req, res) {
         var id = req.params.id;
         var newUser = req.body;
-        var users = userModel.Update(id, newUser);
-        res.json(users);
+        var user = userModel.Update(id, newUser);
+        res.json(user);
     });
 
     app.delete('/api/assignment/user/:id', function(req, res){
