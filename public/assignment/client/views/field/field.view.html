@@ -1,0 +1,235 @@
+<div>
+    <h1 class="body-padding">Forms : {{model.form.title}}</h1>
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation"><a href="#/form">Forms</a></li>
+        <li role="presentation" class="active"><a>Fields</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="forms">
+
+        </div>
+
+        <div role="tabpanel" class="tab-panes active" id="fields">
+
+            <div ng-model="field" ng-repeat="field in model.fields">
+                <div ng-switch on="field.type">
+
+                    <div ng-switch-when="TEXT" class="row tab-panes-margin">
+                        <div class="col-sm-10 row-width">
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-3 control-label">{{field.label}}:</label>
+                                <div class="col-sm-9 form-field-margin">
+                                    <input type="text" class="form-control" id="firstName" placeholder={{field.placeholder}}>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span ng-click="model.deleteField(field)" class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-align-justify icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div ng-switch-when="DATE" class="row tab-panes-margin">
+                        <div class="col-sm-10 row-width">
+                            <div class="form-group">
+                                <label for="dateOfBirth" class="col-sm-3 control-label">{{field.label}}:</label>
+                                <div class="col-sm-9 form-field-margin">
+                                    <input type="date" class="form-control" id="dateOfBirth" placeholder={{field.placeholder}}>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span ng-click="model.deleteField(field)" class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-align-justify icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-switch-when="OPTIONS" class="row tab-panes-margin">
+                        <div class="col-sm-10 row-width">
+                            <div class="form-group">
+                                <label for="gender" class="col-sm-3 control-label">{{field.label}}:</label>
+                                <div class="col-sm-9 form-field-margin">
+                                    <select ng-model="options" class="form-control" id="gender"
+                                            ng-options="option.label for option in field.options">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span ng-click="model.deleteField(field)" class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-align-justify icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-switch-when="CHECKBOXES" class="row tab-panes-margin">
+                        <div class="col-sm-7 row-width">
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="roles" class="control-label">{{field.label}}:</label>
+                                    <div class="checkbox" id="roles" ng-repeat="option in field.options">
+                                        <label>
+                                            <input type="checkbox"> {{option.label}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span ng-click="model.deleteField(field)" class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-align-justify icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-switch-when="RADIOS" class="row tab-panes-margin">
+                        <div class="col-sm-7 row-width">
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="license-agreement" class="control-label">{{field.label}}:</label>
+                                    <div class="radio" id="license-agreement" ng-repeat="option in field.options">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="license-agreement-yes" value="yes">
+                                            {{option.label}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span ng-click="model.deleteField(field)" class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-align-justify icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-switch-when="TEXTAREA" class="row tab-panes-margin">
+                        <div class="col-sm-10 row-width">
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-3 control-label">{{field.label}}:</label>
+                                <div class="col-sm-9 form-field-margin">
+                                    <textarea class="form-control" rows="4" cols="50" placeholder={{field.placeholder}}></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span ng-click="model.deleteField(field)" class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <span class="glyphicon glyphicon-align-justify icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row tab-panes-margin">
+                <div class="col-sm-10 row-width">
+                    <div class="form-group">
+                        <label for="add-field" class="col-sm-3 control-label">Add New Field:</label>
+                        <div class="col-sm-9 form-field-margin">
+                            <select ng-model="model.fieldType" class="form-control" id="add-field">
+                                <option value="TEXT">Single Line Text Field</option>
+                                <option value="DATE">Date Field</option>
+                                <option value="OPTIONS">Dropdown Field</option>
+                                <option value="CHECKBOXES">Checkboxes Field</option>
+                                <option value="RADIOS">Radio buttons Field</option>
+                                <option value="TEXTAREA">Paragraph Text Field</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <!--Intentionally left blank to align plus with other pluses on page-->
+                        </div>
+                        <div class="col-xs-3">
+                            <span ng-click="model.addField(model.fieldType)" class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="BackpackBuddyApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Backpack Buddy - Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+    <script src="client/app.js"></script>
+    <script src="client/config.js"></script>
+    <script src="client/views/search/search.controller.js"></script>
+    <script src="client/services/WikiDataService.js"></script>
+    <script src="client/views/destination/destination.controller.js"></script>
+
+</head>
+<body>
+    <div ng-include="'client/views/header/header.view.html'">
+    </div>
+
+    <div class="container" ng-view>
+    </div>
+</body>
+</html>

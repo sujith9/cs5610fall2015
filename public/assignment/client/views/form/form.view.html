@@ -1,0 +1,61 @@
+<div>
+    <h1 class="body-padding">Forms</h1>
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#/form">Forms</a></li>
+        <li role="presentation"><a>Fields</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="forms">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Form name</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Action</th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <input type="text" ng-model="formModel.form.title" class="form-control" placeholder="name">
+                    </th>
+
+                    <th>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <span ng-click="formModel.addForm()" class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span ng-click="formModel.updateForm()" class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+
+                </thead>
+                <tbody>
+                    <tr ng-repeat="form in formModel.forms">
+                        <td>
+                            <a href="#/user/{{user._id}}/form/{{form._id}}/fields/">{{form.title}}</a>
+                        </td>
+
+                        <td>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <span ng-click="formModel.deleteForm($index)" class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span ng-click="formModel.selectForm($index)" class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="fields">
+
+        </div>
+    </div>
+</div>

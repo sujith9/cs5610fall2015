@@ -1,0 +1,52 @@
+.row-full{
+    max-width: 100%;
+}
+
+.body-padding{
+    margin-top: 0px;
+}
+
+.nav>li>a:hover{
+    background-color: #337ab7;
+    color: #ffffff;
+}
+
+.navbar{
+    border-radius: 0px;
+}
+
+.navbar .glyphicon:before{
+    font-size: 12px;
+}
+
+.form-horizontal .control-label{
+    text-align: left;
+}
+
+.icon-class{
+    font-size: 28px;
+    width: 100%;
+    text-align: center;
+}
+
+.tab-panes-margin{
+    margin-top: 25px;
+}
+
+.form-field-margin{
+    padding-left: 0px;
+}
+
+hr{
+    border: none;
+    height: 1px;
+    background-color: #333;
+}
+
+.row-width{
+    width: 80%;
+}
+
+.display-error{
+    color: red;
+}

@@ -1,0 +1,16 @@
+.top-buffer {
+    margin-top: 5%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.borderless td, .borderless th, .borderless tr {
+    border: none;
+}
+
+.border-solid{
+    border-style: solid;
+}
+
