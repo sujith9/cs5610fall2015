@@ -17,6 +17,10 @@
                     templateUrl: "client/views/profile/profile.view.html",
                     controller: "ProfileController as model"
                 })
+                .when("/timeline", {
+                    templateUrl: "client/views/timeline/timeline.view.html",
+                    controller: "ProfileController as model"
+                })
                 .otherwise({
                     redirectTo: "/home"
                 });

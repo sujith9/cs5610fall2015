@@ -25,6 +25,7 @@
                     <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
 
                         <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#/profile">Profile</a></li>
                             <li><a href="" data-toggle="modal" data-target="#registerModal"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register</a></li>
                             <li><a href="" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Login</a></li>
                         </ul>
@@ -34,7 +35,7 @@
         </div>
     </nav>
 
-    <div id="loginModal" class="modal fade" role="dialog">
+    <div id="loginModal" class="modal fade" role="dialog" ng-controller="LoginController">
         <div class="modal-dialog modal-sm">
 
             <!-- Modal content-->
@@ -43,32 +44,37 @@
                     <h4 align="center" class="modal-title">Login</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">Username:</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                    <div>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputUsername3" class="col-sm-3 control-label">Username:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="user.username" class="form-control" id="inputUsername3" placeholder="Username">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword" class="col-sm-3 control-label">Password:</label>
-                            <div class="col-sm-9">
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-3 control-label">Password:</label>
+                                <div class="col-sm-9">
+                                    <input type="password" ng-model="user.password" class="form-control" id="inputPassword3" placeholder="Password">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-8 col-sm-4">
-                                <button class="btn btn-primary btn-default btn-block">Login</button>
+                            <div class="form-group">
+                                <div class="col-sm-offset-8 col-sm-4">
+                                    <button type="submit" ng-click="loginModel.login(user.username, user.password)" class="btn btn-primary btn-default btn-block">Login</button>
+                                </div>
                             </div>
+                        </form>
+                        <div class="display-error">
+                            {{error}}
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <div id="registerModal" class="modal fade" role="dialog">
+    <div id="registerModal" class="modal fade" role="dialog" ng-controller="RegisterController">
         <div class="modal-dialog modal-md">
 
             <!-- Modal content-->
@@ -81,33 +87,33 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-3 control-label">Username:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputUsername3" placeholder="Username">
+                                <input type="text" ng-model="user.username" class="form-control" id="inputUsername3" placeholder="Username">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-3 control-label">Password:</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                <input type="password" ng-model="user.password" class="form-control" id="inputPassword3" placeholder="Password">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-3 control-label">Verify Password:</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="Verify Password">
+                                <input type="password" ng-model="user.passwordConfirmation" class="form-control" id="inputPassword4" placeholder="Verify Password">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-3 control-label">Email:</label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                <input type="email" ng-model="user.email" class="form-control" id="inputEmail3" placeholder="Email">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-9 col-sm-3">
-                                <button type="submit" class="btn btn-primary btn-default btn-block">Register</button>
+                                <button type="submit" ng-click="registerModel.register(user.username, user.password, user.email)" class="btn btn-primary btn-default btn-block">Register</button>
                             </div>
                         </div>
                     </form>

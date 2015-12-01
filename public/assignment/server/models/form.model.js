@@ -104,9 +104,9 @@ module.exports = function(db, mongoose){
                 deferred.reject(err);
             }
             else{
-                FormModel.find({"userId": userId}, function(err, forms){
-                    if(err){
-                        deferred.reject(err);
+                FormModel.find({"userId": userId}, function(err1, forms){
+                    if(err1){
+                        deferred.reject(err1);
                     }
                     else{
                         deferred.resolve(forms);

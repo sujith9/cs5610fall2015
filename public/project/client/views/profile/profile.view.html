@@ -1,53 +1,59 @@
-<div>
-    <div class="row border-solid">
-        <div class="col-md-3">
-            <img src="http://www.synergysportsfacility.com/wp-content/uploads/2015/02/blank-profile.jpg" align="center" width="200" height="200">
-        </div>
+<div ng-controller="ProfileController">
+    <h1 class="body-padding">Profile</h1>
 
-        <div class="col-md-9">
-            <h1>FirstName LastName</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui.
-            </p>
-
-            <p>
-                Email: member@backpackbuddy.com
-            </p>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-3 border-solid">
-            <h4>Following:</h4>
-            <ul>
-                <li>Member 1</li>
-                <li>Member 2</li>
-                <li>Member 3</li>
-            </ul>
-
-            <br>
-
-            <h4>Places visited/visiting:</h4>
-            <ul>
-                <a href="../destination/destination.view.html"><li>Destination 1</li><span><input type=date (yyyy-mm-dd)></span></a>
-                <a href="../destination/destination.view.html"><li>Destination 2</li><span><input type=date (yyyy-mm-dd)></span></a>
-                <a href="../destination/destination.view.html"><li>Destination 3</li><span><input type=date (yyyy-mm-dd)></span></a>
-            </ul>
-        </div>
-
-        <div class="col-md-8 col-md-offset-1">
-            <div>
-                <h2>Recent Updates</h2>
-                <h3>Member Name</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales .</p>
-            </div>
-            <br>
-            <div>
-                <h3>Member Name</h3>
-                <ul>
-                    <li>Member is visiting <a href="../destination/destination.view.html">PLACE</a> on 04/2016</li>
-                </ul>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">Username:</label>
+            <div class="col-sm-9">
+                <input type="text" ng-model="user.username" class="form-control" id="inputUsername3" placeholder="Username">
             </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">Password:</label>
+            <div class="col-sm-9">
+                <input type="password" ng-model="user.password" class="form-control" id="inputPassword3" placeholder="Password">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="firstName3" class="col-sm-3 control-label">First Name:</label>
+            <div class="col-sm-9">
+                <input type="text" ng-model="user.firstName" class="form-control" id="firstName3" placeholder="First Name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName3" class="col-sm-3 control-label">Last Name:</label>
+            <div class="col-sm-9">
+                <input type="text" ng-model="user.lastName" class="form-control" id="lastName3" placeholder="Last Name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">Email:</label>
+            <div class="col-sm-9">
+                <input type="email" ng-model="user.email" class="form-control" id="inputEmail3" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputAbout" class="col-sm-3 control-label">About you:</label>
+            <div class="col-sm-9">
+                <textarea ng-model="user.about" class="form-control" id="inputAbout" placeholder="About you..."></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputImage" class="col-sm-3 control-label">Profile Picture:</label>
+            <div class="col-sm-9">
+                <input type="file" ng-model="user.profilePicture" class="form-control" id="inputImage" accept="image/*">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-9 col-sm-3">
+                <button type="submit" ng-click="model.update(user)" class="btn btn-primary btn-default btn-block">Update</button>
+            </div>
+        </div>
+    </form>
 </div>

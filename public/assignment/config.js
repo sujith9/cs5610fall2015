@@ -17,7 +17,7 @@
                     controller: "LoginController as loginModel"
                 })
                 .when("/profile", {
-                    templateUrl: "client/views/profile/profile.view.html",
+                    templateUrl: "client/views/profile/timeline.view.html",
                     controller: "ProfileController as profileModel"
                 })
                 .when("/admin", {
