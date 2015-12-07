@@ -23,13 +23,22 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 
 var db = mongoose.connect(connectionString);
 
+var passport      = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var cookieParser  = require('cookie-parser');
+var session       = require('express-session');
+
+app.use(session({secret: 'this is the secret'}));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+
 //mongoose.connect('mongodb://localhost/cs5610');
 //var db = mongoose.connection;
 
 require("./public/assignment/server/app.js")(app, db, mongoose);
+require("./public/project/server/app.js")(app, db, mongoose, passport, LocalStrategy);
 
-console.log(connectionString);
-console.log(port, ipaddress);
 
 //require("./public/assignment/server/services/user.service.js")(app);
 //require("./public/assignment/server/services/form.service.js")(app);

@@ -1,23 +1,44 @@
 <div>
     <div class="row border-solid">
         <div class="col-md-3">
-            <img src="http://www.synergysportsfacility.com/wp-content/uploads/2015/02/blank-profile.jpg" align="center" width="200" height="200">
+            <img src="{{model.timelineUser.profilePicture}}" align="center" width="200" height="200">
         </div>
 
         <div class="col-md-9">
-            <h1>FirstName LastName</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui.
-            </p>
+            <h1>{{model.timelineUser.firstName}} {{model.timelineUser.lastName}}
+                <button ng-show="model.following && model.timelineUser._id != user._id" class="btn btn-success pull-right">
+                        <span ng-click="model.unfollowUser(model.timelineUser._id)">
+                            Following
+                        </span>
+                </button>
 
-            <p>
-                Email: member@backpackbuddy.com
-            </p>
+                <button ng-show="!model.following && model.timelineUser._id != user._id" class="btn btn-default pull-right">
+                        <span ng-click="model.followUser(model.timelineUser._id)">
+                            Follow
+                        </span>
+                </button>
+            </h1>
+            <div>
+                <p>
+                    {{model.timelineUser.about}}
+                </p>
+
+                <p ng-show="user">
+                    {{model.timelineUser.email}}
+                </p>
+            </div>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-md-3 border-solid">
+            <h4>Bookmarks:</h4>
+            <ul>
+                <li ng-repeat="bookmark in model.timelineUserBookmarks"><a href="#/destination/{{bookmark.title}}">{{bookmark.title}}</a></li>
+            </ul>
+
+            <br>
+
             <h4>Following:</h4>
             <ul>
                 <li>Member 1</li>
@@ -29,9 +50,7 @@
 
             <h4>Places visited/visiting:</h4>
             <ul>
-                <a href="../destination/destination.view.html"><li>Destination 1</li><span><input type=date (yyyy-mm-dd)></span></a>
-                <a href="../destination/destination.view.html"><li>Destination 2</li><span><input type=date (yyyy-mm-dd)></span></a>
-                <a href="../destination/destination.view.html"><li>Destination 3</li><span><input type=date (yyyy-mm-dd)></span></a>
+                <li ng-repeat="visit in model.timelineUserVisits"><a href="#/destination/{{visit.title}}">{{visit.title}}</a> {{visit.dateVisiting | date : format : timezone}}</li>
             </ul>
         </div>
 

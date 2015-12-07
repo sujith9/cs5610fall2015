@@ -1,34 +1,35 @@
 <div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <h1>{{model.destinationDetails.parse.title}}</h1>
+            <h1>{{model.destinationDetails.parse.title}}
+                <button ng-show="model.bookmarked" class="btn btn-success pull-right">
+                    <span ng-click="model.removeBookmarkForPage(model.bookmark._id)">
+                        Bookmarked
+                    </span>
+                </button>
+
+                <button ng-show="!model.bookmarked" class="btn btn-default pull-right">
+                    <span ng-click="model.bookmarkPage(model.destinationDetails.parse.title, model.destinationDetails.parse.pageid, user._id)">
+                        Bookmark
+                    </span>
+                </button>
+            </h1>
             <p ng-bind-html="model.destinationDetails.parse.text['*'] | unsafe"></p>
-            <a href="https://en.wikivoyage.org/wiki/{{model.destinationDetails.parse.title}}" target="_blank">Know more at WikiVoyage</a>
+            <a href="https://en.wikivoyage.org/wiki/{{model.pageWikiURL}}" target="_blank">Know more at WikiVoyage</a>
         </div>
     </div>
     <br>
     <div class="row">
-        <div class="col-md-6 border-solid">
+        <div class="col-md-5 border-solid">
             <h3>Members Visiting Destination</h3>
-            <table class="table borderless">
-                <tr align="center">
-                    <td><a href="#/timeline">Member 1</a></td>
-                    <td><input type="date"></td>
-                    <td><button class="btn btn-default btn-block">Follow</button></td>
-                </tr>
-
-                <tr align="center">
-                    <td><a href="#/timeline">Member 1</a></td>
-                    <td><input type="date"></td>
-                    <td><button class="btn btn-default btn-block">Follow</button></td>
-                </tr>
-
-                <tr align="center">
-                    <td><a href="#/timeline">Member 1</a></td>
-                    <td><input type="date"></td>
-                    <td><button class="btn btn-default btn-block">Follow</button></td>
+            <table ng-show="model.peopleVisiting" class="table borderless">
+                <tr ng-repeat="visit in model.peopleVisiting" align="center">
+                    <td><a href="#/timeline/{{visit.userId._id}}">{{visit.userId.username}}</a></td>
+                    <td>{{visit.dateVisiting | date : format : timezone}}</td>
                 </tr>
             </table>
+
+            <p ng-show="!user">Please <a href="#/login">login</a> to see members visiting {{model.destinationDetails.parse.title}}</p>
         </div>
         <div class="col-md-5 col-md-offset-1 border-solid">
             <h3>Visiting this Destination?</h3>
@@ -36,12 +37,12 @@
                 <div class="form-group">
                     <label for="inputDate" class="col-sm-3 control-label">When?:</label>
                     <div class="col-sm-9">
-                        <input type="date" class="form-control" id="inputDate">
+                        <input ng-model="visitDate" type="date" class="form-control" id="inputDate">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-9 col-sm-3">
-                        <button type="submit" class="btn btn-default btn-block">Login</button>
+                        <button ng-click="model.createVisit(model.destinationDetails.parse.title, model.destinationDetails.parse.pageid, visitDate)" type="submit" class="btn btn-default btn-block">Submit</button>
                     </div>
                 </div>
             </form>
@@ -49,14 +50,17 @@
     </div>
 
     <h2>Reviews</h2>
-    <div class="row">
-        <div class="col-md-1">
-            <img src="http://www.synergysportsfacility.com/wp-content/uploads/2015/02/blank-profile.jpg" align="center" width="80" height="80">
-        </div>
-        <div class="col-md-11">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam.
-            </p>
+    <div ng-repeat="review in model.reviews">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="{{review.userId.profilePicture}}" align="center" width="80" height="80">
+            </div>
+            <div class="col-md-11">
+                <a href="#/timeline/{{review.userId._id}}"><h3>{{review.userId.username}}</h3></a>
+                <p>
+                    {{review.content}}
+                </p>
+            </div>
         </div>
     </div>
     <br>
@@ -64,12 +68,12 @@
         <form class="form-horizontal">
             <div class="form-group">
                 <div class="col-md-12">
-                    <textarea class="form-control" rows="3" placeholder="Add your review..."></textarea>
+                    <textarea ng-model="content" class="form-control" rows="3" placeholder="Add your review..."></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-9 col-sm-3">
-                    <button type="submit" class="btn btn-default btn-block">Submit</button>
+                    <button ng-click="model.createReviewForPage(model.destinationDetails.parse.title, model.destinationDetails.parse.pageid, content)" type="submit" class="btn btn-default btn-block">Submit</button>
                 </div>
             </div>
         </form>
