@@ -2,9 +2,9 @@
 
 module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
 
-    //var UserModelForPassport = require('mongoose').model("UserModelProject");
-    //
-    //
+    var UserModelForPassport = require('mongoose').model("UserModelProject");
+
+
     //passport.use(new LocalStrategy(
     //    function(username, password, done)
     //    {

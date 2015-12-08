@@ -11,7 +11,6 @@
 
         function register(username, password, email){
             var newUserTemp = {"username": username, "password": password, "email": email};
-            alert("Register");
             UserService.createUser(newUserTemp).then(function(response){
                 if(response !== null || response != undefined) {
                     $rootScope.user = response;

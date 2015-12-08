@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <div class="row border-solid">
         <div class="col-md-3">
             <img src="{{model.timelineUser.profilePicture}}" align="center" width="200" height="200">
@@ -6,13 +6,13 @@
 
         <div class="col-md-9">
             <h1>{{model.timelineUser.firstName}} {{model.timelineUser.lastName}}
-                <button ng-show="model.following && model.timelineUser._id != user._id" class="btn btn-success pull-right">
-                        <span ng-click="model.unfollowUser(model.timelineUser._id)">
+                <button ng-show="model.followObject && model.timelineUser._id != user._id" class="btn btn-success pull-right">
+                        <span ng-click="model.unfollowUser(model.followObject._id)">
                             Following
                         </span>
                 </button>
 
-                <button ng-show="!model.following && model.timelineUser._id != user._id" class="btn btn-default pull-right">
+                <button ng-show="!model.followObject && model.timelineUser._id != user._id" class="btn btn-default pull-right">
                         <span ng-click="model.followUser(model.timelineUser._id)">
                             Follow
                         </span>
@@ -41,9 +41,7 @@
 
             <h4>Following:</h4>
             <ul>
-                <li>Member 1</li>
-                <li>Member 2</li>
-                <li>Member 3</li>
+                <li ng-repeat="member in model.timelineUserFollows"><a href="#/timeline/{{member.followUser._id}}">{{member.followUser.username}}</a></li>
             </ul>
 
             <br>

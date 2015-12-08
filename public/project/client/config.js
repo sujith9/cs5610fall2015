@@ -38,5 +38,6 @@
                 .otherwise({
                     redirectTo: "/home"
                 });
-        });
+        })
+
 })();

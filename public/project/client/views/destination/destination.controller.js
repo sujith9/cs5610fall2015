@@ -10,10 +10,19 @@
             };
         });
 
-    function DestinationController(WikiService, $routeParams, $location, BookmarkService, $rootScope, ReviewService, VisitService) {
+    function DestinationController($scope, $anchorScroll, WikiService, $routeParams, $location, BookmarkService, $rootScope, ReviewService, VisitService) {
         var model = this;
         var destination = $routeParams.destination;
         destination = destination.replace('-', '/');
+
+        $scope.gotoBottom = function() {
+            // set the location.hash to the id of
+            // the element you wish to scroll to.
+            $location.hash('review');
+
+            // call $anchorScroll()
+            $anchorScroll();
+        };
 
         model.bookmarkPage = bookmarkPage;
         model.searchLocation = searchLocation;
@@ -56,7 +65,6 @@
                 BookmarkService.findIfBookmarked($rootScope.user._id,
                     page.parse.title,
                     page.parse.pageid).then(function(response){
-                        console.log(response);
                         if(response != null) {
                             model.bookmark = response;
                             model.bookmarked = true;

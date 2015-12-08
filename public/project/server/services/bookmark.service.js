@@ -15,7 +15,9 @@ module.exports = function(app, BookmarkModel){
         var userId = req.params.userId;
         var title = req.params.title;
         var pageId = req.params.pageId;
+        console.log("From bookmark service "+title, pageId);
         BookmarkModel.findBookMarkForUser({userId: userId, title: title, pageId: pageId}).then(function(bookmark){
+            console.log("From bookmark service after reply", bookmark);
             res.json(bookmark);
         });
     });

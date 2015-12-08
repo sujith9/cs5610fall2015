@@ -10,12 +10,13 @@
         var model = this;
         model.logout = logout;
 
-        logout()
+        logout();
+        alert("logout");
 
         function logout(){
             UserService.logout().then(function(response){
                 model.user = null;
-                $rootScope.user = model.user;
+                $rootScope.user = null;
                 $location.url("#/home");
             });
         }

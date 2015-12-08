@@ -1,9 +1,17 @@
-<div class="row" ng-show="model.results">
-    <h2>Search Results</h2>
-    <div ng-repeat="place in model.results.query.search">
-        <div>
-            <a href="#/destination/{{place.title}}"><h2>{{place.title}}</h2></a>
-            <p ng-bind-html="place.snippet | unsafe">...</p>
+<div class="container search">
+    <div class="row" ng-show="model.results">
+        <h2 class="no-border">Search Results</h2>
+        <div ng-repeat="place in model.results.query.search">
+            <a class="search-results" href="#/destination/{{place.title}}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{place.title}}
+                    </div>
+                    <div class="panel-body">
+                        <p ng-bind-html="place.snippet | unsafe">...</p>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
 </div>

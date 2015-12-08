@@ -12,4 +12,7 @@ module.exports = function(app, db, mongoose, passport, LocalStrategy) {
 
     var VisitModel = require("./models/visit.model.js")(db, mongoose);
     require("./services/visit.service.js")(app, VisitModel);
+
+    var FollowModel = require("./models/follow.model.js")(db, mongoose);
+    require("./services/follow.service.js")(app, FollowModel);
 };

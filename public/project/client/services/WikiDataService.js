@@ -31,7 +31,7 @@
         function getDestinationDetails(destination){
             var deferred = $q.defer();
 
-            var url = "https://en.wikivoyage.org/w/api.php?action=parse&section=0&prop=text&page=" + destination +"&format=json&callback=JSON_CALLBACK";
+            var url = "https://en.wikivoyage.org/w/api.php?action=parse&prop=text&page=" + destination +"&format=json&callback=JSON_CALLBACK";
 
             $http.jsonp(url)
                 .success(function(response){

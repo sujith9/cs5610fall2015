@@ -42,6 +42,7 @@ module.exports = function(db, mongoose) {
 
     function findBookMarkForUser(bookmarkObject){
         var deferred = q.defer();
+        console.log("From bookmark model ", bookmarkObject);
 
         BookmarkModel.findOne({userId: bookmarkObject.userId,
             title: bookmarkObject.title, pageId: bookmarkObject.pageId}, function(err, response){
