@@ -18,7 +18,11 @@
                 })
                 .when("/profile", {
                     templateUrl: "client/views/profile/profile.view.html",
-                    controller: "ProfileController as model"
+                    controller: "ProfileController as model",
+                    //resolve: {
+                    //    loggedin: checkCurrentUser
+                    //}
+
                 })
                 .when("/timeline/:userId", {
                     templateUrl: "client/views/timeline/timeline.view.html",
@@ -38,6 +42,24 @@
                 .otherwise({
                     redirectTo: "/home"
                 });
-        })
+        });
+
+    //var checkCurrentUser = function ($q, $timeout, $http, $location, $rootScope) {
+    //    var deferred = $q.defer();
+    //
+    //    $http.get("/api/loggedin")
+    //        .success(function (user) {
+    //            console.log(user);
+    //            // User is Authenticated
+    //            if (user !== '0') {
+    //                $rootScope.user = user;
+    //            } else {
+    //                delete $rootScope.user;
+    //            }
+    //            deferred.resolve();
+    //        });
+    //
+    //    return deferred.promise;
+    //};
 
 })();

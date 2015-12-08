@@ -22,7 +22,7 @@
 
         function login(username, password){
             var deferred = $q.defer();
-            $http.post("/login", {username: username, password: password})
+            $http.post("/api/login", {username: username, password: password})
                 .success(function(response){
                     deferred.resolve(response);
                 });
@@ -32,7 +32,7 @@
 
         function logout(){
             var deferred = $q.defer();
-            $http.post("/logout")
+            $http.post("/api/logout")
                 .success(function(response){
                     deferred.resolve(response);
                 });

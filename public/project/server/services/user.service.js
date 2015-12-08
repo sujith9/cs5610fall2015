@@ -2,9 +2,9 @@
 
 module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
 
-    var UserModelForPassport = require('mongoose').model("UserModelProject");
-
-
+    //var UserModelForPassport = require('mongoose').model("UserModelProject");
+    //
+    //
     //passport.use(new LocalStrategy(
     //    function(username, password, done)
     //    {
@@ -29,24 +29,24 @@ module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
     //    });
     //});
     //
-    //app.post("/login", passport.authenticate('local'), function(req, res)
+    //app.post("/api/login", passport.authenticate('local'), function(req, res)
     //{
     //    var user = req.user;
     //    res.json(user);
     //});
     //
-    //app.get('/loggedin', function(req, res)
+    //app.get('/api/loggedin', function(req, res)
     //{
     //    res.send(req.isAuthenticated() ? req.user : '0');
     //});
     //
-    //app.post('/logout', function(req, res)
+    //app.post('/api/logout', function(req, res)
     //{
     //    req.logOut();
     //    res.send(200);
     //});
     //
-    //app.post('/register', function(req, res)
+    //app.post('/api/register', function(req, res)
     //{
     //    var newUser = req.body;
     //    UserModelForPassport.findOne({username: newUser.username}, function(err, user)
