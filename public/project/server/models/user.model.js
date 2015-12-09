@@ -13,10 +13,44 @@ module.exports = function(db, mongoose) {
         Update: Update,
         Delete: Delete,
         findUserByUsername: findUserByUsername,
-        findUserByCredentials: findUserByCredentials
+        findUserByCredentials: findUserByCredentials,
+        activateUser: activateUser,
+        deactivateUser: deactivateUser
     };
 
     return api;
+
+    function activateUser(userId){
+        var deferred = q.defer();
+
+        UserModelProject.update({"_id": userId}, {$set: {status: "ACTIVE"}}, function(err, response){
+            if(err){
+                deferred.reject(err);
+            }
+            else{
+                deferred.resolve(response);
+            }
+        });
+
+        return deferred.promise;
+
+    }
+
+    function deactivateUser(userId){
+        var deferred = q.defer();
+
+        UserModelProject.update({"_id": userId}, {$set: {status: "INACTIVE"}}, function(err, response){
+            if(err){
+                deferred.reject(err);
+            }
+            else{
+                deferred.resolve(response);
+            }
+        });
+
+        return deferred.promise;
+
+    }
 
     function findUserByUsername(username){
         var deferred = q.defer();

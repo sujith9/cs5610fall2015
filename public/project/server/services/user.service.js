@@ -97,4 +97,26 @@ module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
         });
     });
 
+    app.get('/api/project/user/:id/deactivate', function (req, res) {
+        var id = req.params.id;
+        if(req.user.type == 'ADMIN') {
+            userModel.deactivateUser(id).then(function (user) {
+                userModel.FindAll().then(function(users){
+                    res.json(users)
+                })
+            });
+        }
+    });
+
+    app.get('/api/project/user/:id/activate', function (req, res) {
+        var id = req.params.id;
+        if(req.user.type == 'ADMIN') {
+            userModel.activateUser(id).then(function (user) {
+                userModel.FindAll().then(function(users){
+                    res.json(users)
+                })
+            });
+        }
+    });
+
 };

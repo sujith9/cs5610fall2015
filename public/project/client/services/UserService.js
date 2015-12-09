@@ -16,22 +16,21 @@
             findUserById: findUserById,
             login: login,
             findIfUserLoggedIn: findIfUserLoggedIn,
-            logout: logout
+            logout: logout,
+            activateUser: activateUser,
+            deactivateUser: deactivateUser
         };
 
         return service;
 
         function login(user) {
-            console.log("UserService    user" + user);
             var defer = $q.defer();
 
             $http.post("/api/project/user/login", user)
                 .success(function (response) {
-                    console.log("UserService    response" + response);
                     defer.resolve(response);
                 })
                 .error(function (err) {
-                    console.log("UserService    err" + err);
                     defer.resolve(err);
                 });
 
@@ -127,6 +126,30 @@
                 })
                 .error(function(data, status, headers, config) {
                     console.log(data + status)});
+
+            return deferred.promise;
+        }
+
+        function deactivateUser(userId){
+            var deferred = $q.defer();
+            var url = "/api/project/user/" + userId + "/deactivate";
+
+            $http.get(url)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+
+            return deferred.promise;
+        }
+
+        function activateUser(userId){
+            var deferred = $q.defer();
+            var url = "/api/project/user/" + userId + "/activate";
+
+            $http.get(url)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
 
             return deferred.promise;
         }

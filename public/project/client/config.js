@@ -31,6 +31,13 @@
                         loggedin: RedirectToPageIfLoggedIn
                     }
                 })
+                .when("/admin", {
+                    templateUrl: "client/views/admin/admin.view.html",
+                    controller: "AdminController as model",
+                    resolve: {
+                        loggedin: RedirectToPageIfLoggedIn
+                    }
+                })
                 .when("/login", {
                     templateUrl: "client/views/login/login.view.html",
                     controller: "LoginController as model",
@@ -62,12 +69,11 @@
             .findIfUserLoggedIn()
             .then(function (loggedInUser) {
                 if (loggedInUser !== '0') {
-                    console.log("config() you are already logged in " + loggedInUser.username);
                     $rootScope.user = loggedInUser;
                 }
                 else {
                     $rootScope.user = {};
-                    $rootScope.errorMessage = 'You need to log in.';
+                    $rootScope.errorMessage = 'Please log in to continue.';
                     console.log($rootScope.errorMessage);
                     //$location.url('/login');
                 }

@@ -12,17 +12,6 @@
 
         function login(username, password){
 
-            //UserService.findUserByUsernameAndPassword(username, password).then(function(response){
-            //    model.user = response;
-            //    if(model.user != null || model.user != undefined){
-            //        $rootScope.user = model.user;
-            //        $location.path("/profile")
-            //    }
-            //    else{
-            //        $scope.error = "Incorrect username or password.";
-            //    }
-            //});
-
             var user = {username: username, password: password};
 
             UserService.login(user).then(function(response){

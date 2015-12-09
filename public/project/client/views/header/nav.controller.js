@@ -3,22 +3,17 @@
 
     angular
         .module("BackpackBuddyApp")
-        .controller("LogoutController", LogoutController);
+        .controller("NavbarController", NavbarController);
 
-    function LogoutController(UserService, $location, $rootScope){
+    function NavbarController($rootScope){
 
         var model = this;
-        model.logout = logout;
+        model.isUserAdmin = isUserAdmin;
 
-        logout();
-        alert("logout");
-
-        function logout(){
-            UserService.logout().then(function(response){
-                model.user = null;
-                $rootScope.user = null;
-                $location.url("#/home");
-            });
+        function isUserAdmin(){
+            return ($rootScope.user != undefined
+            && $rootScope.user.type != undefined
+            && $rootScope.user.type.indexOf('ADMIN') > -1);
         }
     }
 })();

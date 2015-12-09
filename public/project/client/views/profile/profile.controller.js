@@ -28,7 +28,6 @@
             };
 
             UserService.updateUser(userId, updatedUser).then(function(response){
-                console.log(response);
                 $rootScope.user = response;
             });
         }

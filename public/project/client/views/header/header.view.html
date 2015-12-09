@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="NavbarController">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,6 +24,7 @@
                 <div class="col-md-6" align="right">
                     <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
                         <ul class="nav navbar-nav navbar-right">
+                            <li ng-show="user.type == 'ADMIN'"><a href="#/admin"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;&nbsp;Admin</a></li>
                             <li ng-show="user._id != null"><a href="#/timeline/{{user._id}}"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;&nbsp;Timeline</a></li>
                             <li ng-show="user._id != null"><a href="#/profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Profile</a></li>
                             <li ng-show="user._id == null"><a href="#/register"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register</a></li>

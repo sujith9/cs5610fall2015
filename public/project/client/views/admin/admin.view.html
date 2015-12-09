@@ -1,0 +1,32 @@
+<div class="container">
+    <h1 class="no-border">Admin</h1>
+    <h2 class="no-border">Current users:</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th><a href=""><span class="glyphicon glyphicon-triangle-bottom"></span></a><span>Username</span></th>
+                <th><a href=""><span class="glyphicon glyphicon-triangle-bottom"></span></a><span>email</span></th>
+                <th><a href=""><span class="glyphicon glyphicon-triangle-bottom"></span></a><span>Type</span></th>
+                <th><a href=""><span class="glyphicon glyphicon-triangle-bottom"></span></a><span>Status</span></th>
+                <th><a href=""><span class="glyphicon glyphicon-triangle-bottom"></span></a><span>Action</span></th>
+            </tr>
+
+            <tr ng-repeat="user in model.users" id="{{user._id}}">
+                <td><a href="#/profile/{{user.username}}">{{user.username}}</a></td>
+                <td>{{user.email}}</td>
+                <td>{{user.type}}</td>
+                <td>{{user.status}}</td>
+                <td>
+                    <div ng-show="user.status == 'ACTIVE'">
+                        <button class="btn btn-success" ng-click="model.deactivateUser(user._id)">Deactivate</button>
+                    </div>
+
+                    <div ng-show="user.status !== 'ACTIVE'">
+                        <button class="btn btn-default" ng-click="model.activateUser(user._id)">Activate</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
