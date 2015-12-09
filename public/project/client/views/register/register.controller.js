@@ -5,14 +5,14 @@
         .module("BackpackBuddyApp")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController($scope, $rootScope, UserService, $location){
+    function RegisterController($rootScope, UserService, $location){
         var model = this;
         model.register = register;
 
         function register(username, password, email, password2){
             var newUserTemp = {"username": username, "password": password, "email": email};
 
-            if(password != password2){
+            if(password != password2 && password != "" && password != null){
                 model.error = "Passwords don't match.";
             }
             else {

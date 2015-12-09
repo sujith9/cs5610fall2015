@@ -54,6 +54,9 @@
                     model.follows = true;
                 });
             }
+            else{
+                alert("Please login.")
+            }
         }
 
         function findIfFollows(userId){

@@ -15,6 +15,9 @@
 
 
         function update(user){
+            if(user.profilePicture == '' || user.profilePicture == null){
+                user.profilePicture = "https://lh3.googleusercontent.com/-yJIlCzdSKv8/AAAAAAAAAAI/AAAAAAAAAAA/eQh2S1I6JsM/s120-c/photo.jpg"
+            }
             var updatedUser = {_id: userId,
                 username: user.username,
                 password: user.password,

@@ -94,6 +94,9 @@
                     model.bookmarked = true;
                 });
             }
+            else{
+                alert("Please login to bookmark this page.")
+            }
 
         }
 
@@ -117,6 +120,10 @@
                     model.reviews = response;
                 })
             }
+
+            else{
+                alert("Please login.")
+            }
         }
 
         function createVisit(title, pageId, date){
@@ -131,6 +138,10 @@
                 VisitService.createVisitForUser(newVisit).then(function(response){
                     model.peopleVisiting = response;
                 })
+            }
+
+            else{
+                alert("Please login.")
             }
         }
     }

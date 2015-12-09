@@ -160,3 +160,18 @@ a.search-results:hover .panel-default{
     background-position: center center;
     background-size: cover;
 }
+
+p {
+    text-align: justify;
+}
+
+@media (min-width:320px) {
+     .container{
+        min-height: 340px;
+    }
+}
+@media (min-width:992px) {
+    .container {
+        min-height: 340px;
+    }
+}
