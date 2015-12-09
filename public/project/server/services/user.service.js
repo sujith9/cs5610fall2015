@@ -11,12 +11,9 @@ module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
                 "username": username,
                 "password": password
             };
-            console.log("passport.use(new LocalStrategy" + credentials);
             userModel
                 .findUserByCredentials(credentials)
                 .then(function (user) {
-                    //console.log("----------" + user);
-                    console.log("----------");
                     if (!user) {
                         return done(null, false);
                     }

@@ -26,7 +26,10 @@
                 })
                 .when("/timeline/:userId", {
                     templateUrl: "client/views/timeline/timeline.view.html",
-                    controller: "TimelineController as model"
+                    controller: "TimelineController as model",
+                    resolve: {
+                        loggedin: RedirectToPageIfLoggedIn
+                    }
                 })
                 .when("/login", {
                     templateUrl: "client/views/login/login.view.html",

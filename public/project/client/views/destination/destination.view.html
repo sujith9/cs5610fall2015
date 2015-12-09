@@ -1,6 +1,6 @@
 <div class="container destination">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-xs-12">
 
             <div class="border-solid member-area">
                 <h3>Members Visiting Destination</h3>
@@ -16,10 +16,10 @@
                 <h3>Visiting this Destination?</h3>
                 <form class="form-horizontal">
                     <div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 col-xs-12">
                             <input ng-model="visitDate" type="date" class="form-control" id="inputDate">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 col-xs-12">
                             <button ng-click="model.createVisit(model.destinationDetails.parse.title, model.destinationDetails.parse.pageid, visitDate)" type="submit" class="btn btn-default btn-block">Submit</button>
                         </div>
                     </div>
@@ -51,10 +51,10 @@
     <div ng-show="model.reviews">
         <div ng-repeat="review in model.reviews">
             <div class="row">
-                <div class="col-md-1">
+                <div class="col-md-1 col-sm-1 col-xs-12">
                     <img src="{{review.userId.profilePicture}}" align="center" width="80" height="80">
                 </div>
-                <div class="col-md-11">
+                <div class="col-md-11 col-sm-11 col-xs-12">
                     <a href="#/timeline/{{review.userId._id}}"><h3>{{review.userId.username}} {{review.reviewDate | date : format : timezone}}</h3></a>
                     <p>
                         {{review.content}}
@@ -70,12 +70,12 @@
     <div class="row">
         <form class="form-horizontal">
             <div class="form-group">
-                <div class="col-md-12">
+                <div class="col-md-12 col-xs-12">
                     <textarea ng-model="content" class="form-control" rows="3" placeholder="Add your review..."></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-9 col-sm-3">
+                <div class="col-sm-offset-9 col-sm-3 col-xs-12">
                     <button ng-click="model.createReviewForPage(model.destinationDetails.parse.title, model.destinationDetails.parse.pageid, content)" type="submit" class="btn btn-default btn-block">Submit</button>
                 </div>
             </div>
