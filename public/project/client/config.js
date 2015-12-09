@@ -20,7 +20,7 @@
                     templateUrl: "client/views/profile/profile.view.html",
                     controller: "ProfileController as model",
                     resolve: {
-                        loggedin: RedirectToRegularPageIfAlreadyLoggedInElseShowLoginPage
+                        loggedin: RedirectToPageIfLoggedIn
                     }
 
                 })
@@ -32,14 +32,14 @@
                     templateUrl: "client/views/login/login.view.html",
                     controller: "LoginController as model",
                     resolve: {
-                        loggedin: RedirectToHomePageIfAlreadyLoggedInElseRespectivePage
+                        loggedin: RedirectToHomePageIfLoggedIn
                     }
                 })
                 .when("/register", {
                     templateUrl: "client/views/register/register.view.html",
                     controller: "RegisterController as model",
                     resolve: {
-                        loggedin: RedirectToHomePageIfAlreadyLoggedInElseRespectivePage
+                        loggedin: RedirectToHomePageIfLoggedIn
                     }
                 })
                 .when("/logout", {
@@ -82,38 +82,32 @@
     }
 
     //
-    function RedirectToHomePageIfAlreadyLoggedInElseRespectivePage(UserService, $rootScope, $location) {
+    function RedirectToHomePageIfLoggedIn(UserService, $rootScope, $location) {
         UserService
             .findIfUserLoggedIn()
             .then(function (loggedInUser) {
                 if (loggedInUser !== '0') {
-                    console.log("config() you are already logged in " + loggedInUser.username + loggedInUser._id);
                     $rootScope.user = loggedInUser;
                     $location.url('/home');
                 }
                 else {
                     $rootScope.user = {};
-                    $rootScope.errorMessage = 'You need to log in.';
-                    console.log($rootScope.errorMessage);
-                    //$location.url('/profile');
+                    $rootScope.errorMessage = 'Please log in to continue.';
                 }
 
             });
     }
 
-    function RedirectToRegularPageIfAlreadyLoggedInElseShowLoginPage(UserService, $rootScope, $location) {
+    function RedirectToPageIfLoggedIn(UserService, $rootScope, $location) {
         UserService
             .findIfUserLoggedIn()
             .then(function (loggedInUser) {
                 if (loggedInUser !== '0') {
-                    console.log("config() you are already logged in " + loggedInUser.username + loggedInUser._id);
                     $rootScope.user = loggedInUser;
-                    //$location.url('/home');
                 }
                 else {
                     $rootScope.user = {};
-                    $rootScope.errorMessage = 'You need to log in.';
-                    console.log($rootScope.errorMessage);
+                    $rootScope.errorMessage = 'Please log in to continue.';
                     $location.url('/login');
                 }
 
