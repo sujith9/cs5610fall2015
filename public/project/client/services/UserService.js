@@ -13,27 +13,47 @@
             createUser : createUser,
             deleteUserById : deleteUserById,
             updateUser : updateUser,
+            findUserById: findUserById,
             login: login,
-            logout: logout,
-            findUserById: findUserById
+            findIfUserLoggedIn: findIfUserLoggedIn,
+            logout: logout
         };
 
         return service;
 
-        function login(username, password){
+        function login(user) {
+            console.log("UserService    user" + user);
+            var defer = $q.defer();
+
+            $http.post("/api/project/user/login", user)
+                .success(function (response) {
+                    console.log("UserService    response" + response);
+                    defer.resolve(response);
+                })
+                .error(function (err) {
+                    console.log("UserService    err" + err);
+                    defer.resolve(err);
+                });
+
+            return defer.promise;
+        }
+
+        function findIfUserLoggedIn() {
             var deferred = $q.defer();
-            $http.post("/api/login", {username: username, password: password})
-                .success(function(response){
+
+            $http.get('/api/project/user/loggedin')
+                .success(function (response) {
                     deferred.resolve(response);
                 });
 
             return deferred.promise;
         }
 
-        function logout(){
+        function logout() {
             var deferred = $q.defer();
-            $http.post("/api/logout")
-                .success(function(response){
+
+            $http.get('/api/project/user/logout')
+                .success(function (response) {
                     deferred.resolve(response);
                 });
 

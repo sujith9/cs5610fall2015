@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(app, FollowModel){
+module.exports = function(app, FollowModel, ReviewModel){
 
     // Create follow
     app.post('/api/project/follow/', function (req, res) {
@@ -35,6 +35,25 @@ module.exports = function(app, FollowModel){
                 followObjects[i].followUser.password = null;
             }
             res.json(followObjects);
+        });
+    });
+
+    app.get('/api/project/update/user/:userId', function (req, res) {
+        var userId = req.params.userId;
+        FollowModel.findAllFollowsForUser(userId).then(function(followObjects){
+            var userIds = [];
+            for(var i = 0; i < followObjects.length; i++){
+                userIds.push(followObjects[i].followUser._id)
+            }
+
+            ReviewModel.getReviewsForUsers(userIds).then(function(response){
+                for(var j = 0; j < response.length; j++){
+                    response[j].userId.password = null;
+                    response[j].userId.email = null;
+                }
+                res.json(response);
+            });
+
         });
     });
 };

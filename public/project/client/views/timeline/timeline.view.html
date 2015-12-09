@@ -6,13 +6,13 @@
 
         <div class="col-md-9">
             <h1>{{model.timelineUser.firstName}} {{model.timelineUser.lastName}}
-                <button ng-show="model.followObject && model.timelineUser._id != user._id" class="btn btn-success pull-right">
+                <button ng-show="model.followObject && model.timelineUser._id != user._id && model.follows" class="btn btn-success pull-right">
                         <span ng-click="model.unfollowUser(model.followObject._id)">
                             Following
                         </span>
                 </button>
 
-                <button ng-show="!model.followObject && model.timelineUser._id != user._id" class="btn btn-default pull-right">
+                <button ng-show="!model.follows && model.timelineUser._id != user._id" class="btn btn-default pull-right">
                         <span ng-click="model.followUser(model.timelineUser._id)">
                             Follow
                         </span>
@@ -23,7 +23,7 @@
                     {{model.timelineUser.about}}
                 </p>
 
-                <p ng-show="user">
+                <p ng-show="user._id != null">
                     {{model.timelineUser.email}}
                 </p>
             </div>
@@ -54,16 +54,14 @@
 
         <div class="col-md-8 col-md-offset-1">
             <h2>Recent Updates</h2>
-            <div>
-                <h3>Member Name</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales .</p>
-            </div>
-            <br>
-            <div>
-                <h3>Member Name</h3>
-                <ul>
-                    <li>Member is visiting <a href="../destination/destination.view.html">PLACE</a> on 04/2016</li>
-                </ul>
+            <p ng-show="!model.updatesForUser">No updates found.</p>
+            <div ng-repeat="update in model.updatesForUser">
+                <h4><a href="#/timeline/{{update.userId._id}}">{{update.userId.username}}</a> posted review for <a href="#/destination/{{update.title}}">{{update.title}}</a></h4>
+                on {{update.reviewDate | date : format : timezone}}
+                <p>
+                    {{update.content}}
+                </p>
+                <br>
             </div>
         </div>
     </div>

@@ -24,11 +24,11 @@
                 <div class="col-md-6" align="right">
                     <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-9" aria-expanded="false">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#/timeline/{{user._id}}"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;&nbsp;Timeline</a></li>
-                            <li><a href="#/profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Profile</a></li>
-                            <li><a href="#/register"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register</a></li>
-                            <li><a href="#/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Login</a></li>
-                            <li><a href="#/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;Logout</a></li>
+                            <li ng-show="user._id != null"><a href="#/timeline/{{user._id}}"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;&nbsp;Timeline</a></li>
+                            <li ng-show="user._id != null"><a href="#/profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Profile</a></li>
+                            <li ng-show="user._id == null"><a href="#/register"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register</a></li>
+                            <li ng-show="user._id == null"><a href="#/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Login</a></li>
+                            <li ng-show="user._id != null"><a href="#/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;Logout</a></li>
                         </ul>
                     </div>
                 </div>

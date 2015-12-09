@@ -14,5 +14,5 @@ module.exports = function(app, db, mongoose, passport, LocalStrategy) {
     require("./services/visit.service.js")(app, VisitModel);
 
     var FollowModel = require("./models/follow.model.js")(db, mongoose);
-    require("./services/follow.service.js")(app, FollowModel);
+    require("./services/follow.service.js")(app, FollowModel, ReviewModel);
 };

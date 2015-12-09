@@ -28,7 +28,7 @@
             };
 
             UserService.updateUser(userId, updatedUser).then(function(response){
-                model.user = response;
+                console.log(response);
                 $rootScope.user = response;
             });
         }

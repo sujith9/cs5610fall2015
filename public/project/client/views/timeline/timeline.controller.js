@@ -13,6 +13,7 @@
         loadUserVisits(userId);
         findIfFollows(userId);
         loadAllFollowingUsers(userId);
+        loadAllUpdatesForUser(userId);
 
         model.unfollowUser = unfollowUser;
         model.followUser = followUser;
@@ -78,6 +79,12 @@
             FollowService.findAllFollowingUsers(userId).then(function(followObjects){
                 model.timelineUserFollows = followObjects;
             });
+        }
+
+        function loadAllUpdatesForUser(userId){
+            FollowService.getUpdatesForUser(userId).then(function(response){
+                model.updatesForUser = response;
+            })
         }
     }
 })();

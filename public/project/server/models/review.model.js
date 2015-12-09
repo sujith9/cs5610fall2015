@@ -8,7 +8,8 @@ module.exports = function(db, mongoose) {
 
     var api ={
         createReview: createReview,
-        findReviewsForPage: findReviewsForPage
+        findReviewsForPage: findReviewsForPage,
+        getReviewsForUsers: getReviewsForUsers
     };
 
     return api;
@@ -44,6 +45,24 @@ module.exports = function(db, mongoose) {
                 deferred.resolve(reviews);
             }
         });
+
+        return deferred.promise;
+    }
+
+    function getReviewsForUsers(userIds){
+        var deferred = q.defer();
+
+        ReviewModel
+            .find({'userId': { $in: userIds}})
+            .populate('userId')
+            .exec(function(err, reviews){
+                if(err){
+                    deferred.reject(err);
+                }
+                else{
+                    deferred.resolve(reviews);
+                }
+            });
 
         return deferred.promise;
     }

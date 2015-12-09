@@ -19,9 +19,9 @@
                 .when("/profile", {
                     templateUrl: "client/views/profile/profile.view.html",
                     controller: "ProfileController as model",
-                    //resolve: {
-                    //    loggedin: checkCurrentUser
-                    //}
+                    resolve: {
+                        loggedin: RedirectToRegularPageIfAlreadyLoggedInElseShowLoginPage
+                    }
 
                 })
                 .when("/timeline/:userId", {
@@ -30,36 +30,94 @@
                 })
                 .when("/login", {
                     templateUrl: "client/views/login/login.view.html",
-                    controller: "LoginController as model"
+                    controller: "LoginController as model",
+                    resolve: {
+                        loggedin: RedirectToHomePageIfAlreadyLoggedInElseRespectivePage
+                    }
                 })
                 .when("/register", {
                     templateUrl: "client/views/register/register.view.html",
-                    controller: "RegisterController as model"
+                    controller: "RegisterController as model",
+                    resolve: {
+                        loggedin: RedirectToHomePageIfAlreadyLoggedInElseRespectivePage
+                    }
                 })
                 .when("/logout", {
-                    controller: "LogoutController as model"
+                    resolve: {
+                        logout: logout
+                    }
                 })
                 .otherwise({
                     redirectTo: "/home"
                 });
         });
 
-    //var checkCurrentUser = function ($q, $timeout, $http, $location, $rootScope) {
-    //    var deferred = $q.defer();
+
+
+    function findIfUserLoggedIn(UserService, $rootScope, $location) {
+        UserService
+            .findIfUserLoggedIn()
+            .then(function (loggedInUser) {
+                if (loggedInUser !== '0') {
+                    console.log("config() you are already logged in " + loggedInUser.username);
+                    $rootScope.user = loggedInUser;
+                }
+                else {
+                    $rootScope.user = {};
+                    $rootScope.errorMessage = 'You need to log in.';
+                    console.log($rootScope.errorMessage);
+                    //$location.url('/login');
+                }
+
+            });
+    };
+
+    function logout(UserService, $rootScope, $location, $q) {
+        UserService
+            .logout()
+            .then(function (loggedInUser) {
+                $rootScope.user = {};
+                $location.url('/home');
+            });
+    }
+
     //
-    //    $http.get("/api/loggedin")
-    //        .success(function (user) {
-    //            console.log(user);
-    //            // User is Authenticated
-    //            if (user !== '0') {
-    //                $rootScope.user = user;
-    //            } else {
-    //                delete $rootScope.user;
-    //            }
-    //            deferred.resolve();
-    //        });
-    //
-    //    return deferred.promise;
-    //};
+    function RedirectToHomePageIfAlreadyLoggedInElseRespectivePage(UserService, $rootScope, $location) {
+        UserService
+            .findIfUserLoggedIn()
+            .then(function (loggedInUser) {
+                if (loggedInUser !== '0') {
+                    console.log("config() you are already logged in " + loggedInUser.username + loggedInUser._id);
+                    $rootScope.user = loggedInUser;
+                    $location.url('/home');
+                }
+                else {
+                    $rootScope.user = {};
+                    $rootScope.errorMessage = 'You need to log in.';
+                    console.log($rootScope.errorMessage);
+                    //$location.url('/profile');
+                }
+
+            });
+    }
+
+    function RedirectToRegularPageIfAlreadyLoggedInElseShowLoginPage(UserService, $rootScope, $location) {
+        UserService
+            .findIfUserLoggedIn()
+            .then(function (loggedInUser) {
+                if (loggedInUser !== '0') {
+                    console.log("config() you are already logged in " + loggedInUser.username + loggedInUser._id);
+                    $rootScope.user = loggedInUser;
+                    //$location.url('/home');
+                }
+                else {
+                    $rootScope.user = {};
+                    $rootScope.errorMessage = 'You need to log in.';
+                    console.log($rootScope.errorMessage);
+                    $location.url('/login');
+                }
+
+            });
+    }
 
 })();

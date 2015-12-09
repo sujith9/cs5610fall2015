@@ -11,7 +11,8 @@
             followUser: followUser,
             unfollowUser: unfollowUser,
             findIfFollowing: findIfFollowing,
-            findAllFollowingUsers: findAllFollowingUsers
+            findAllFollowingUsers: findAllFollowingUsers,
+            getUpdatesForUser: getUpdatesForUser
         };
 
         return service;
@@ -60,5 +61,15 @@
             return deferred.promise;
         }
 
+        function getUpdatesForUser(userId){
+            var deferred = $q.defer();
+            var url = "/api/project/update/user/" + userId;
+            $http.get(url)
+                .success(function(response){
+                    deferred.resolve(response);
+                });
+
+            return deferred.promise;
+        }
     }
 }());

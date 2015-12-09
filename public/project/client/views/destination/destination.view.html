@@ -55,7 +55,7 @@
                     <img src="{{review.userId.profilePicture}}" align="center" width="80" height="80">
                 </div>
                 <div class="col-md-11">
-                    <a href="#/timeline/{{review.userId._id}}"><h3>{{review.userId.username}}</h3></a>
+                    <a href="#/timeline/{{review.userId._id}}"><h3>{{review.userId.username}} {{review.reviewDate | date : format : timezone}}</h3></a>
                     <p>
                         {{review.content}}
                     </p>

@@ -2,72 +2,52 @@
 
 module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
 
-    //var UserModelForPassport = require('mongoose').model("UserModelProject");
-    //
-    //
-    //passport.use(new LocalStrategy(
-    //    function(username, password, done)
-    //    {
-    //        UserModelForPassport.findOne({username: username, password: password}, function(err, user)
-    //        {
-    //            if (err) { return done(err); }
-    //            if (!user) { return done(null, false); }
-    //            return done(null, user);
-    //        })
-    //    }));
-    //
-    //passport.serializeUser(function(user, done)
-    //{
-    //    done(null, user);
-    //});
-    //
-    //passport.deserializeUser(function(user, done)
-    //{
-    //    userModel.findById(user._id, function(err, user)
-    //    {
-    //        done(err, user);
-    //    });
-    //});
-    //
-    //app.post("/api/login", passport.authenticate('local'), function(req, res)
-    //{
-    //    var user = req.user;
-    //    res.json(user);
-    //});
-    //
-    //app.get('/api/loggedin', function(req, res)
-    //{
-    //    res.send(req.isAuthenticated() ? req.user : '0');
-    //});
-    //
-    //app.post('/api/logout', function(req, res)
-    //{
-    //    req.logOut();
-    //    res.send(200);
-    //});
-    //
-    //app.post('/api/register', function(req, res)
-    //{
-    //    var newUser = req.body;
-    //    UserModelForPassport.findOne({username: newUser.username}, function(err, user)
-    //    {
-    //        if(err) { return next(err); }
-    //        if(user)
-    //        {
-    //            res.json(null);
-    //            return;
-    //        }
-    //        var newUser = new UserModelForPassport(req.body);
-    //        newUser.save(function(err, user)
-    //        {
-    //            req.login(user, function(err)
-    //            {
-    //                if(err) { return next(err); }
-    //                res.json(user);
-    //            });
-    //        });
-    //    });
-    //});
+    app.get("/api/project/user/loggedin", loggedin);
+    app.get("/api/project/user/logout", logout);
+
+    passport.use(new LocalStrategy(
+        function (username, password, done) {
+            var credentials = {
+                "username": username,
+                "password": password
+            };
+            console.log("passport.use(new LocalStrategy" + credentials);
+            userModel
+                .findUserByCredentials(credentials)
+                .then(function (user) {
+                    //console.log("----------" + user);
+                    console.log("----------");
+                    if (!user) {
+                        return done(null, false);
+                    }
+                    return done(null, user);
+                });
+        }));
+
+    passport.serializeUser(function (user, done) {
+        done(null, user);
+    });
+
+    passport.deserializeUser(function (user, done) {
+        done(null, user);
+    });
+
+    app.post("/api/project/user/login", passport.authenticate('local'), function (req, res) {
+        var user = req.user;
+
+        res.json(user);
+    });
+
+    function loggedin(req, res) {
+        //var t = req.params.t;
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
+
+    function logout(req, res) {
+        //var t = req.params.t;
+        req.logOut();
+        res.send(200);
+    }
 
     app.get('/api/project/user', function(req, res){
         var username = req.query.username;
@@ -119,4 +99,5 @@ module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
             res.json(users);
         });
     });
+
 };

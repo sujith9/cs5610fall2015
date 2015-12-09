@@ -3,6 +3,12 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var cookieParser = require('cookie-parser');
+var session = require('express-session'); // allows to maintain state, tells this cookie is associate with particulat state. Allows stateful conversation to distinguish users.
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -23,13 +29,10 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 
 var db = mongoose.connect(connectionString);
 
-var passport      = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var cookieParser  = require('cookie-parser');
-var session       = require('express-session');
-
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'this is the secret'
+    secret: process.env.SESSION_SECRET || 'this is the secret',
+    resave: true,
+    saveUninitialized: true
 }));
 app.use(cookieParser());
 app.use(passport.initialize());
