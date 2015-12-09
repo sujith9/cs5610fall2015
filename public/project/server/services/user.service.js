@@ -61,6 +61,9 @@ module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
         }
         else {
             userModel.FindAll().then(function(users){
+                for(var i = 0; i < users.length; i++){
+                    users[i].password = null;
+                }
                 res.json(users);
             });
         }
@@ -102,6 +105,9 @@ module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
         if(req.user.type == 'ADMIN') {
             userModel.deactivateUser(id).then(function (user) {
                 userModel.FindAll().then(function(users){
+                    for(var i = 0; i < users.length; i++){
+                        users[i].password = null;
+                    }
                     res.json(users)
                 })
             });
@@ -113,6 +119,9 @@ module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
         if(req.user.type == 'ADMIN') {
             userModel.activateUser(id).then(function (user) {
                 userModel.FindAll().then(function(users){
+                    for(var i = 0; i < users.length; i++){
+                        users[i].password = null;
+                    }
                     res.json(users)
                 })
             });
