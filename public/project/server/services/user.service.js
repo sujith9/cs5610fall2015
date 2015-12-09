@@ -73,7 +73,16 @@ module.exports = function(app, userModel, mongoose, passport, LocalStrategy){
     app.post('/api/project/user', function (req, res) {
         var newUser = req.body;
         userModel.Create(newUser).then(function(user){
-            res.json(user);
+            if(user != null){
+                req.login(user, function(err)
+                {
+                    if(err) { return next(err); }
+                    res.json(user);
+                });
+            }
+            else{
+                res.json(user);
+            }
         });
     });
 

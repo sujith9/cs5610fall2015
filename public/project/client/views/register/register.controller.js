@@ -9,15 +9,24 @@
         var model = this;
         model.register = register;
 
-        function register(username, password, email){
+        function register(username, password, email, password2){
             var newUserTemp = {"username": username, "password": password, "email": email};
-            UserService.createUser(newUserTemp).then(function(response){
-                if(response !== null || response != undefined) {
-                    $rootScope.user = response;
-                    model.user = response;
-                    $location.path("/profile");
-                }
-            });
+
+            if(password != password2){
+                model.error = "Passwords don't match.";
+            }
+            else {
+                UserService.createUser(newUserTemp).then(function (response) {
+                    if (response !== null || response != undefined) {
+                        $rootScope.user = response;
+                        model.user = response;
+                        $location.path("/profile");
+                    }
+                    else {
+                        model.error = "Username already exists. Please use a different username."
+                    }
+                });
+            }
         }
     }
 }());

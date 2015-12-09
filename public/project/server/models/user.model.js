@@ -93,20 +93,27 @@ module.exports = function(db, mongoose) {
         user.firstName = "";
         user.lastName = "";
 
-        UserModelProject.create(user, function(err, response){
-            if(err){
-                deferred.reject(err);
+        UserModelProject.findOne({username: user.username}, function(err, response){
+            if(err) { return next(err); }
+            if(response) {
+                deferred.resolve(null);
+                return;
             }
-            else{
-                UserModelProject.findOne({"_id": newUserId}, function(err, user){
-                    if(err){
-                        deferred.reject(err);
-                    }
-                    else{
-                        deferred.resolve(user);
-                    }
-                });
-            }
+            UserModelProject.create(user, function(err, response){
+                if(err){
+                    deferred.reject(err);
+                }
+                else{
+                    UserModelProject.findOne({"_id": newUserId}, function(err, user){
+                        if(err){
+                            deferred.reject(err);
+                        }
+                        else{
+                            deferred.resolve(user);
+                        }
+                    });
+                }
+            });
         });
 
         return deferred.promise;

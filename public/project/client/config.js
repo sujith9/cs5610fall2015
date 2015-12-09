@@ -97,7 +97,6 @@
             .then(function (loggedInUser) {
                 if (loggedInUser !== '0') {
                     $rootScope.user = loggedInUser;
-                    $location.url('/home');
                 }
                 else {
                     $rootScope.user = {};
