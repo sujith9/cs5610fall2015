@@ -72,7 +72,7 @@
                     $rootScope.user = loggedInUser;
                 }
                 else {
-                    $rootScope.user = {};
+                    $rootScope.user = null;
                     $rootScope.errorMessage = 'Please log in to continue.';
                     console.log($rootScope.errorMessage);
                     //$location.url('/login');
@@ -85,7 +85,7 @@
         UserService
             .logout()
             .then(function (loggedInUser) {
-                $rootScope.user = {};
+                $rootScope.user = null;
                 $location.url('/home');
             });
     }
@@ -97,9 +97,10 @@
             .then(function (loggedInUser) {
                 if (loggedInUser !== '0') {
                     $rootScope.user = loggedInUser;
+                    $location.url('/home');
                 }
                 else {
-                    $rootScope.user = {};
+                    $rootScope.user = null;
                     $rootScope.errorMessage = 'Please log in to continue.';
                 }
 
@@ -114,7 +115,7 @@
                     $rootScope.user = loggedInUser;
                 }
                 else {
-                    $rootScope.user = {};
+                    $rootScope.user = null;
                     $rootScope.errorMessage = 'Please log in to continue.';
                     $location.url('/login');
                 }

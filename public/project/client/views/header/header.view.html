@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="row row-full">
+            <div class="row">
                 <div class="navbar-header col-md-6">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
@@ -18,11 +18,11 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="https://docs.google.com/document/d/1HApFRLmuiGzSBAZBxMG91pAxVvuPwwmTwUFegHuYnsY/edit?usp=sharing" target="_blank">Documentation</a></li>
                             <li ng-show="user.type == 'ADMIN'"><a href="#/admin"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;&nbsp;Admin</a></li>
-                            <li ng-show="user._id != null"><a href="#/timeline/{{user._id}}"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;&nbsp;Timeline</a></li>
-                            <li ng-show="user._id != null"><a href="#/profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Profile</a></li>
-                            <li ng-show="user._id == null"><a href="#/register"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register</a></li>
-                            <li ng-show="user._id == null"><a href="#/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Login</a></li>
-                            <li ng-show="user._id != null"><a href="#/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;Logout</a></li>
+                            <li ng-show="user"><a href="#/timeline/{{user._id}}"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;&nbsp;Timeline</a></li>
+                            <li ng-show="user"><a href="#/profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Profile</a></li>
+                            <li ng-show="!user"><a href="#/register"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register</a></li>
+                            <li ng-show="!user"><a href="#/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Login</a></li>
+                            <li ng-show="user"><a href="#/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;Logout</a></li>
                         </ul>
                     </div>
                 </div>
