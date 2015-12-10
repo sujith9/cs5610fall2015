@@ -175,3 +175,11 @@ p {
         min-height: 340px;
     }
 }
+
+.vcard abbr{
+    display: none;
+}
+
+.vcard .label{
+    color: #000000;
+}
